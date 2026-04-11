@@ -142,17 +142,41 @@ setInterval(() => {
 
 const exploreButtons = [...document.querySelectorAll('#exploreNav button')];
 const exploreTrack = document.querySelector('#exploreTrack');
+const exploreStage = document.querySelector('.explore-stage');
+const exploreSlides = [...document.querySelectorAll('#exploreTrack .explore-slide')];
 let exploreIndex = 0;
+function updateExploreTrackPosition(index) {
+  if (!exploreTrack || !exploreStage || !exploreSlides[index]) return;
+  const activeSlide = exploreSlides[index];
+  const target = exploreStage.clientWidth / 2 - (activeSlide.offsetLeft + activeSlide.offsetWidth / 2);
+  exploreTrack.style.transform = `translateX(${target}px)`;
+}
+
 function setExplore(index) {
   if (!exploreTrack || !exploreButtons.length) return;
-  exploreIndex = index;
-  exploreButtons.forEach((btn, i) => btn.classList.toggle('active', i === index));
-  exploreTrack.style.transform = `translateX(-${index * 100}%)`;
+  exploreIndex = ((index % exploreButtons.length) + exploreButtons.length) % exploreButtons.length;
+  exploreButtons.forEach((btn, i) => btn.classList.toggle('active', i === exploreIndex));
+  exploreSlides.forEach((slide, i) => slide.classList.toggle('active', i === exploreIndex));
+  updateExploreTrackPosition(exploreIndex);
 }
+
 exploreButtons.forEach((btn, i) => btn.addEventListener('click', () => setExplore(i)));
+exploreSlides.forEach((slide, i) => {
+  slide.addEventListener('click', () => setExplore(i));
+});
+
+if (exploreStage) {
+  exploreStage.addEventListener('click', (event) => {
+    if (event.target.closest('.explore-slide')) return;
+    setExplore(exploreIndex + 1);
+  });
+}
+
+window.addEventListener('resize', () => updateExploreTrackPosition(exploreIndex));
+setExplore(0);
 setInterval(() => {
   if (!exploreButtons.length) return;
-  setExplore((exploreIndex + 1) % exploreButtons.length);
+  setExplore(exploreIndex + 1);
 }, 2800);
 
 
