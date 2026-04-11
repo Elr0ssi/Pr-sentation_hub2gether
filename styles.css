@@ -45,6 +45,8 @@ p{color:var(--muted)} .tag{display:inline-flex;margin-bottom:12px;border:1px sol
 
 .team{grid-template-columns:repeat(3,1fr);margin-top:12px}.avatar{width:58px;height:58px;border-radius:50%;background:linear-gradient(145deg,var(--pink),var(--blue));margin-bottom:8px}.final{text-align:center}
 
+.figma-wrap{margin-top:12px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#111827;display:grid;place-items:center;padding:8px}.figma-wrap iframe{width:min(100%,980px);height:520px;border:0}
+
 .fade-in{opacity:0;transform:translateY(25px);transition:.65s ease}.fade-in.visible{opacity:1;transform:translateY(0)}.tilt{transition:transform .2s ease}
 @media (max-width:1300px){.menu{display:none}}
-@media (max-width:980px){body{overflow:auto}#page{height:auto}.panel{min-height:auto}.split,.phone-layout,.laptop-layout,.timeline-layout,.plans,.kpi-row,.team,.goal-gauges,.year-ribbon,.finance-top,.finance-main{grid-template-columns:1fr}.hero-center{min-height:auto}.topbar{border-radius:0 0 20px 20px}.phone-mock.auto-rotate{animation:none;transform:none}}
+@media (max-width:980px){body{overflow:auto}#page{height:auto}.panel{min-height:auto}.split,.phone-layout,.laptop-layout,.timeline-layout,.plans,.kpi-row,.team,.goal-gauges,.year-ribbon,.finance-top,.finance-main{grid-template-columns:1fr}.hero-center{min-height:auto}.topbar{border-radius:0 0 20px 20px}.phone-mock.auto-rotate{animation:none;transform:none}.figma-wrap iframe{height:360px}}
