@@ -2,27 +2,38 @@ const page = document.querySelector('#page');
 const panels = [...document.querySelectorAll('.panel')];
 const progressBar = document.querySelector('#progressBar');
 let isAnimating = false;
+let currentIndex = 0;
+let wheelAccum = 0;
+let wheelResetTimer;
 
-function nearestPanelIndex() {
+function clampIndex(i) {
+  return Math.max(0, Math.min(panels.length - 1, i));
+}
+
+function detectCurrentIndex() {
+  const mid = page.scrollTop + page.clientHeight / 2;
   let idx = 0;
   let dist = Infinity;
   panels.forEach((panel, i) => {
-    const d = Math.abs(panel.offsetTop - page.scrollTop);
+    const center = panel.offsetTop + panel.offsetHeight / 2;
+    const d = Math.abs(center - mid);
     if (d < dist) {
       dist = d;
       idx = i;
     }
   });
-  return idx;
+  currentIndex = idx;
 }
 
-function goToPanel(index) {
-  if (!panels[index]) return;
+function goToIndex(targetIndex) {
+  currentIndex = clampIndex(targetIndex);
   isAnimating = true;
-  panels[index].scrollIntoView({ behavior: 'smooth', block: 'start' });
+  panels[currentIndex].scrollIntoView({ behavior: 'smooth', block: 'start' });
   setTimeout(() => {
     isAnimating = false;
-  }, 650);
+    wheelAccum = 0;
+    detectCurrentIndex();
+  }, 820);
 }
 
 page.addEventListener(
@@ -30,9 +41,19 @@ page.addEventListener(
   (event) => {
     if (window.innerWidth <= 980 || isAnimating) return;
     event.preventDefault();
-    const current = nearestPanelIndex();
-    const next = event.deltaY > 0 ? current + 1 : current - 1;
-    if (next >= 0 && next < panels.length) goToPanel(next);
+
+    wheelAccum += event.deltaY;
+    clearTimeout(wheelResetTimer);
+    wheelResetTimer = setTimeout(() => {
+      wheelAccum = 0;
+    }, 120);
+
+    const threshold = 60;
+    if (Math.abs(wheelAccum) < threshold) return;
+
+    const direction = wheelAccum > 0 ? 1 : -1;
+    wheelAccum = 0;
+    goToIndex(currentIndex + direction);
   },
   { passive: false }
 );
@@ -43,7 +64,7 @@ const revealObserver = new IntersectionObserver(
       if (entry.isIntersecting) entry.target.classList.add('visible');
     });
   },
-  { threshold: 0.2 }
+  { threshold: 0.22 }
 );
 document.querySelectorAll('.fade-in').forEach((node) => revealObserver.observe(node));
 
@@ -57,9 +78,7 @@ function animateCount(el) {
       current = target;
       clearInterval(timer);
     }
-    if (target === 1) el.textContent = '1';
-    else if (target < 100) el.textContent = `+${current}%`;
-    else el.textContent = current.toLocaleString('fr-FR');
+    el.textContent = current.toLocaleString('fr-FR');
   }, 24);
 }
 
@@ -71,67 +90,57 @@ const countObserver = new IntersectionObserver(
       animateCount(entry.target);
     });
   },
-  { threshold: 0.55 }
+  { threshold: 0.5 }
 );
 document.querySelectorAll('[data-count]').forEach((node) => countObserver.observe(node));
 
-const slideButtons = [...document.querySelectorAll('#productNav button')];
-const slides = [...document.querySelectorAll('#productSlides .slide')];
-let slideIndex = 0;
-function setSlide(index) {
-  slideIndex = index;
-  slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
-  slideButtons.forEach((button, i) => button.classList.toggle('active', i === index));
-}
-slideButtons.forEach((button, i) => button.addEventListener('click', () => setSlide(i)));
-setInterval(() => setSlide((slideIndex + 1) % slides.length), 2600);
+const slideButtons = [...document.querySelectorAll('#solution .solution-card')];
+const phoneScreen = document.querySelector('#phoneScreen');
+const phoneLabels = ['MATCH', 'TOURNOIS', 'RANKING'];
+let phoneIndex = 0;
+setInterval(() => {
+  phoneIndex = (phoneIndex + 1) % phoneLabels.length;
+  phoneScreen.textContent = phoneLabels[phoneIndex];
+  slideButtons.forEach((card, idx) => card.classList.toggle('active', idx === phoneIndex));
+}, 2200);
 
-const priceCards = [...document.querySelectorAll('#pricingCards .price')];
+const specItems = [...document.querySelectorAll('#specList li')];
+let specIndex = 0;
+setInterval(() => {
+  specItems.forEach((item, idx) => item.classList.toggle('active', idx === specIndex));
+  specIndex = (specIndex + 1) % specItems.length;
+}, 1800);
+
+const plans = [...document.querySelectorAll('#plans .plan')];
 const planLive = document.querySelector('#planLive');
-let priceIndex = 0;
-function setPrice(index) {
-  priceIndex = index;
-  priceCards.forEach((card, i) => card.classList.toggle('active', i === index));
-  planLive.textContent = priceCards[index].dataset.plan;
+let planIndex = 0;
+function setPlan(index) {
+  planIndex = index;
+  plans.forEach((plan, i) => plan.classList.toggle('active', i === index));
+  planLive.textContent = plans[index].dataset.plan;
 }
-priceCards.forEach((card, i) => {
-  card.addEventListener('mouseenter', () => setPrice(i));
-});
+plans.forEach((plan, i) => plan.addEventListener('mouseenter', () => setPlan(i)));
 setInterval(() => {
   if (window.innerWidth <= 980) return;
-  setPrice((priceIndex + 1) % priceCards.length);
-}, 2800);
+  setPlan((planIndex + 1) % plans.length);
+}, 2600);
 
-const tiltNodes = document.querySelectorAll('.tilt');
-tiltNodes.forEach((node) => {
+document.querySelectorAll('.tilt').forEach((node) => {
   node.addEventListener('mousemove', (event) => {
     const rect = node.getBoundingClientRect();
     const dx = (event.clientX - rect.left) / rect.width - 0.5;
     const dy = (event.clientY - rect.top) / rect.height - 0.5;
-    node.style.transform = `perspective(720px) rotateX(${(-dy * 5).toFixed(2)}deg) rotateY(${(dx * 6).toFixed(2)}deg)`;
+    node.style.transform = `perspective(760px) rotateX(${(-dy * 5).toFixed(2)}deg) rotateY(${(dx * 6).toFixed(2)}deg)`;
   });
   node.addEventListener('mouseleave', () => {
     node.style.transform = '';
   });
 });
 
-const heroSpot = document.querySelector('#heroSpot');
-heroSpot.addEventListener('mousemove', (event) => {
-  const x = (event.clientX / window.innerWidth) * 100;
-  const y = (event.clientY / window.innerHeight) * 100;
-  heroSpot.style.background = `radial-gradient(500px at ${x}% ${y}%, rgba(255,255,255,.45), transparent 60%)`;
-});
-heroSpot.addEventListener('mouseleave', () => {
-  heroSpot.style.background = 'transparent';
-});
-
-const tickerTrack = document.querySelector('.ticker-track');
-if (tickerTrack) {
-  tickerTrack.innerHTML += tickerTrack.innerHTML;
-}
-
 page.addEventListener('scroll', () => {
   const max = page.scrollHeight - page.clientHeight;
-  const ratio = max <= 0 ? 0 : (page.scrollTop / max) * 100;
-  progressBar.style.width = `${ratio}%`;
+  progressBar.style.width = `${max <= 0 ? 0 : (page.scrollTop / max) * 100}%`;
+  if (!isAnimating) detectCurrentIndex();
 });
+
+detectCurrentIndex();
