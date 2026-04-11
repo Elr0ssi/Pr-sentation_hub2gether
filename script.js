@@ -121,23 +121,6 @@ document.querySelectorAll('.tilt').forEach((node) => {
   });
 });
 
-const phonePair = document.querySelector('#phonePair3d');
-const leftPhone = document.querySelector('.left-phone');
-const rightPhone = document.querySelector('.right-phone');
-if (phonePair && leftPhone && rightPhone) {
-  phonePair.addEventListener('mousemove', (event) => {
-    const rect = phonePair.getBoundingClientRect();
-    const dx = (event.clientX - rect.left) / rect.width - 0.5;
-    const dy = (event.clientY - rect.top) / rect.height - 0.5;
-    leftPhone.style.transform = `rotateY(${-28 + dx * 22}deg) rotateX(${4 - dy * 8}deg) translateY(${dy * 12}px)`;
-    rightPhone.style.transform = `rotateY(${28 + dx * 22}deg) rotateX(${4 + dy * 8}deg) translateY(${dy * -12}px)`;
-  });
-  phonePair.addEventListener('mouseleave', () => {
-    leftPhone.style.transform = '';
-    rightPhone.style.transform = '';
-  });
-}
-
 page.addEventListener('scroll', () => {
   const max = page.scrollHeight - page.clientHeight;
   progressBar.style.width = `${max <= 0 ? 0 : (page.scrollTop / max) * 100}%`;
