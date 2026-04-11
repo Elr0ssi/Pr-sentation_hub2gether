@@ -121,6 +121,40 @@ document.querySelectorAll('.tilt').forEach((node) => {
   });
 });
 
+
+
+const impactTabs = [...document.querySelectorAll('#impactTabs button')];
+const impactPanels = [...document.querySelectorAll('.impact-panel')];
+impactTabs.forEach((tab) => {
+  tab.addEventListener('click', () => {
+    impactTabs.forEach((t) => t.classList.remove('active'));
+    tab.classList.add('active');
+    const key = tab.dataset.target;
+    impactPanels.forEach((panel) => panel.classList.toggle('active', panel.dataset.panel === key));
+  });
+});
+let impactIndex = 0;
+setInterval(() => {
+  if (!impactTabs.length) return;
+  impactIndex = (impactIndex + 1) % impactTabs.length;
+  impactTabs[impactIndex].click();
+}, 3200);
+
+const exploreButtons = [...document.querySelectorAll('#exploreNav button')];
+const exploreTrack = document.querySelector('#exploreTrack');
+let exploreIndex = 0;
+function setExplore(index) {
+  if (!exploreTrack || !exploreButtons.length) return;
+  exploreIndex = index;
+  exploreButtons.forEach((btn, i) => btn.classList.toggle('active', i === index));
+  exploreTrack.style.transform = `translateX(-${index * 100}%)`;
+}
+exploreButtons.forEach((btn, i) => btn.addEventListener('click', () => setExplore(i)));
+setInterval(() => {
+  if (!exploreButtons.length) return;
+  setExplore((exploreIndex + 1) % exploreButtons.length);
+}, 2800);
+
 page.addEventListener('scroll', () => {
   const max = page.scrollHeight - page.clientHeight;
   progressBar.style.width = `${max <= 0 ? 0 : (page.scrollTop / max) * 100}%`;
