@@ -5,6 +5,7 @@ let isAnimating = false;
 let currentIndex = 0;
 let wheelAccum = 0;
 let wheelResetTimer;
+let lastWheelTrigger = 0;
 
 function clampIndex(i) {
   return Math.max(0, Math.min(panels.length - 1, i));
@@ -33,20 +34,27 @@ function goToIndex(targetIndex) {
     isAnimating = false;
     wheelAccum = 0;
     detectCurrentIndex();
-  }, 820);
+  }, 900);
 }
 
 page.addEventListener('wheel', (event) => {
   if (window.innerWidth <= 980 || isAnimating) return;
   event.preventDefault();
+
+  const now = Date.now();
+  if (now - lastWheelTrigger < 420) return;
+
   wheelAccum += event.deltaY;
   clearTimeout(wheelResetTimer);
   wheelResetTimer = setTimeout(() => {
     wheelAccum = 0;
-  }, 120);
-  if (Math.abs(wheelAccum) < 60) return;
+  }, 110);
+
+  if (Math.abs(wheelAccum) < 70) return;
+
   const direction = wheelAccum > 0 ? 1 : -1;
   wheelAccum = 0;
+  lastWheelTrigger = now;
   goToIndex(currentIndex + direction);
 }, { passive: false });
 
@@ -79,16 +87,6 @@ const countObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.5 });
 document.querySelectorAll('[data-count]').forEach((node) => countObserver.observe(node));
-
-const solutionCards = [...document.querySelectorAll('#solution .solution-card')];
-const phoneScreen = document.querySelector('#phoneScreen');
-const phoneLabels = ['MATCH', 'TOURNOIS', 'RANKING'];
-let phoneIndex = 0;
-setInterval(() => {
-  phoneIndex = (phoneIndex + 1) % phoneLabels.length;
-  phoneScreen.textContent = phoneLabels[phoneIndex];
-  solutionCards.forEach((card, idx) => card.classList.toggle('active', idx === phoneIndex));
-}, 2200);
 
 const specItems = [...document.querySelectorAll('#specList li')];
 let specIndex = 0;
@@ -123,34 +121,22 @@ document.querySelectorAll('.tilt').forEach((node) => {
   });
 });
 
-const hero = document.querySelector('#hero');
-const heroLeft = document.querySelector('#heroPhoneLeft');
-const heroRight = document.querySelector('#heroPhoneRight');
-if (hero && heroLeft && heroRight) {
-  hero.addEventListener('mousemove', (event) => {
-    const rect = hero.getBoundingClientRect();
+const phonePair = document.querySelector('#phonePair3d');
+const leftPhone = document.querySelector('.left-phone');
+const rightPhone = document.querySelector('.right-phone');
+if (phonePair && leftPhone && rightPhone) {
+  phonePair.addEventListener('mousemove', (event) => {
+    const rect = phonePair.getBoundingClientRect();
     const dx = (event.clientX - rect.left) / rect.width - 0.5;
     const dy = (event.clientY - rect.top) / rect.height - 0.5;
-    heroLeft.style.transform = `translate3d(${dx * 26}px, ${dy * 18}px, 0) rotateY(${dx * 18}deg) rotateX(${(-dy * 10).toFixed(2)}deg)`;
-    heroRight.style.transform = `translate3d(${dx * -26}px, ${dy * -16}px, 0) rotateY(${dx * -16}deg) rotateX(${(dy * 8).toFixed(2)}deg)`;
+    leftPhone.style.transform = `rotateY(${-28 + dx * 22}deg) rotateX(${4 - dy * 8}deg) translateY(${dy * 12}px)`;
+    rightPhone.style.transform = `rotateY(${28 + dx * 22}deg) rotateX(${4 + dy * 8}deg) translateY(${dy * -12}px)`;
   });
-  hero.addEventListener('mouseleave', () => {
-    heroLeft.style.transform = '';
-    heroRight.style.transform = '';
+  phonePair.addEventListener('mouseleave', () => {
+    leftPhone.style.transform = '';
+    rightPhone.style.transform = '';
   });
 }
-
-const hoverCard = document.querySelector('#hoverCard');
-const hoverName = document.querySelector('#hoverName');
-const hoverDesc = document.querySelector('#hoverDesc');
-const hoverSize = document.querySelector('#hoverSize');
-document.querySelectorAll('.pin').forEach((pin) => {
-  pin.addEventListener('mouseenter', () => {
-    hoverName.textContent = pin.dataset.name;
-    hoverDesc.textContent = pin.dataset.desc;
-    hoverSize.textContent = pin.dataset.size;
-  });
-});
 
 page.addEventListener('scroll', () => {
   const max = page.scrollHeight - page.clientHeight;
