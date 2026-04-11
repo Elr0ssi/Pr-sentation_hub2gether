@@ -155,6 +155,22 @@ setInterval(() => {
   setExplore((exploreIndex + 1) % exploreButtons.length);
 }, 2800);
 
+
+
+const openPrototypeBtn = document.querySelector('#openPrototype');
+const closePrototypeBtn = document.querySelector('#closePrototype');
+const prototypeOverlay = document.querySelector('#prototypeOverlay');
+if (openPrototypeBtn && closePrototypeBtn && prototypeOverlay) {
+  openPrototypeBtn.addEventListener('click', () => {
+    prototypeOverlay.classList.add('open');
+    prototypeOverlay.setAttribute('aria-hidden', 'false');
+  });
+  closePrototypeBtn.addEventListener('click', () => {
+    prototypeOverlay.classList.remove('open');
+    prototypeOverlay.setAttribute('aria-hidden', 'true');
+  });
+}
+
 page.addEventListener('scroll', () => {
   const max = page.scrollHeight - page.clientHeight;
   progressBar.style.width = `${max <= 0 ? 0 : (page.scrollTop / max) * 100}%`;
