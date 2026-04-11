@@ -14,7 +14,21 @@
   </head>
   <body>
     <header class="topbar">
-      <div class="brand">HUB<span>2</span>GETHER</div>
+      <div class="brand-wrap">
+        <img class="brand-logo" src="assets/logo-hub2gether.png" alt="Logo Hub2gether" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';" />
+        <div class="brand" style="display:none;">HUB<span>2</span>GETHER</div>
+      </div>
+      <nav class="menu">
+        <a href="#hero">Accueil</a>
+        <a href="#probleme">Problème</a>
+        <a href="#solution">Solution</a>
+        <a href="#produit">Produit</a>
+        <a href="#marche">Marché</a>
+        <a href="#business">Business</a>
+        <a href="#traction">Traction</a>
+        <a href="#timeline">Roadmap</a>
+        <a href="#cta">CTA</a>
+      </nav>
       <div class="top-actions"><a href="#cta">Investir</a></div>
     </header>
     <div class="progress"><span id="progressBar"></span></div>
@@ -22,11 +36,11 @@
     <main id="page">
       <section class="panel hero" id="hero">
         <div class="glow glow-a"></div><div class="glow glow-b"></div>
+        <div class="hero-phone left" id="heroPhoneLeft"><div class="phone-screen-mini">MATCH</div></div>
+        <div class="hero-phone right" id="heroPhoneRight"><div class="phone-screen-mini alt">RANK</div></div>
         <div class="container hero-center fade-in">
-          <div class="logo-block">
-            <h1>HUB2</h1>
-            <p>GETHER</p>
-          </div>
+          <img class="hero-logo" src="assets/logo-hub2gether.png" alt="Logo Hub2gether" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+          <div class="logo-block" style="display:none;"><h1>HUB2</h1><p>GETHER</p></div>
           <h2>Le sport devient le nouveau moteur de cohésion en entreprise</h2>
           <div class="cta-row"><a class="btn" href="#produit">Voir la démo</a><a class="btn ghost" href="#cta">Investir</a></div>
         </div>
@@ -88,38 +102,13 @@
         </div>
       </section>
 
-      <section class="panel dark" id="business">
-        <div class="container fade-in">
-          <span class="tag">Business Model</span>
-          <h3>Un modèle SaaS scalable</h3>
-          <div class="plans" id="plans">
-            <article class="plan active tilt" data-plan="Starter 99€/mois"><h4>Starter</h4><p>PME</p></article>
-            <article class="plan tilt" data-plan="Growth 249€/mois"><h4>Growth</h4><p>Scale-up</p></article>
-            <article class="plan tilt" data-plan="Business 499€/mois"><h4>Business</h4><p>ETI</p></article>
-            <article class="plan tilt" data-plan="Enterprise Sur devis"><h4>Enterprise</h4><p>Grand compte</p></article>
-          </div>
-          <p class="live" id="planLive">Starter 99€/mois</p>
-        </div>
-      </section>
+      <section class="panel dark" id="business"><div class="container fade-in"><span class="tag">Business Model</span><h3>Un modèle SaaS scalable</h3><div class="plans" id="plans"><article class="plan active tilt" data-plan="Starter 99€/mois"><h4>Starter</h4><p>PME</p></article><article class="plan tilt" data-plan="Growth 249€/mois"><h4>Growth</h4><p>Scale-up</p></article><article class="plan tilt" data-plan="Business 499€/mois"><h4>Business</h4><p>ETI</p></article><article class="plan tilt" data-plan="Enterprise Sur devis"><h4>Enterprise</h4><p>Grand compte</p></article></div><p class="live" id="planLive">Starter 99€/mois</p></div></section>
 
       <section class="panel dark" id="concurrence"><div class="container fade-in"><span class="tag">Concurrence</span><h3>Seule plateforme communautaire + opérationnelle</h3><div class="table-wrap tilt"><table><thead><tr><th></th><th>Hub2gether</th><th>Gymlib</th><th>United Heroes</th><th>TeamOut</th></tr></thead><tbody><tr><td>Matchmaking</td><td>✅</td><td>❌</td><td>❌</td><td>❌</td></tr><tr><td>Social interne</td><td>✅</td><td>❌</td><td>✅</td><td>❌</td></tr><tr><td>Gamification</td><td>✅</td><td>❌</td><td>✅</td><td>❌</td></tr><tr><td>Multi-entreprises</td><td>✅</td><td>❌</td><td>❌</td><td>❌</td></tr></tbody></table></div></div></section>
 
       <section class="panel dark" id="traction"><div class="container fade-in"><span class="tag">Traction</span><h3>Premières preuves</h3><div class="kpi-row"><article class="kpi tilt"><b data-count="1200">0</b><p>utilisateurs actifs</p></article><article class="kpi tilt"><b data-count="780">0</b><p>matchs organisés</p></article><article class="kpi tilt"><b data-count="160">0</b><p>groupes créés</p></article></div></div></section>
 
-      <section class="panel dark" id="timeline">
-        <div class="container timeline-layout fade-in">
-          <div>
-            <span class="tag">Roadmap</span>
-            <h3>Notre timeline de croissance</h3>
-            <p>Du pilote local à la ligue corporate inter-entreprises.</p>
-          </div>
-          <div class="timeline">
-            <div><em>2024</em><span>Pilotes entreprise</span></div>
-            <div><em>2025</em><span>Gamification & RH analytics</span></div>
-            <div><em>2026</em><span>Ligues inter-entreprises</span></div>
-          </div>
-        </div>
-      </section>
+      <section class="panel dark" id="timeline"><div class="container timeline-layout fade-in"><div><span class="tag">Roadmap</span><h3>Notre timeline de croissance</h3><p>Du pilote local à la ligue corporate inter-entreprises.</p></div><div class="timeline"><div><em>2024</em><span>Pilotes entreprise</span></div><div><em>2025</em><span>Gamification & RH analytics</span></div><div><em>2026</em><span>Ligues inter-entreprises</span></div></div></div></section>
 
       <section class="panel dark" id="equipe"><div class="container fade-in"><span class="tag">Équipe</span><h3>Business + Produit + Exécution</h3><div class="team"><article class="tilt"><div class="avatar"></div><h4>Alex Martin</h4><p>CEO</p></article><article class="tilt"><div class="avatar"></div><h4>Lina Roche</h4><p>CPO</p></article><article class="tilt"><div class="avatar"></div><h4>Sam Benali</h4><p>COO</p></article></div></div></section>
 

@@ -48,9 +48,7 @@ page.addEventListener(
       wheelAccum = 0;
     }, 120);
 
-    const threshold = 60;
-    if (Math.abs(wheelAccum) < threshold) return;
-
+    if (Math.abs(wheelAccum) < 60) return;
     const direction = wheelAccum > 0 ? 1 : -1;
     wheelAccum = 0;
     goToIndex(currentIndex + direction);
@@ -94,14 +92,14 @@ const countObserver = new IntersectionObserver(
 );
 document.querySelectorAll('[data-count]').forEach((node) => countObserver.observe(node));
 
-const slideButtons = [...document.querySelectorAll('#solution .solution-card')];
+const solutionCards = [...document.querySelectorAll('#solution .solution-card')];
 const phoneScreen = document.querySelector('#phoneScreen');
 const phoneLabels = ['MATCH', 'TOURNOIS', 'RANKING'];
 let phoneIndex = 0;
 setInterval(() => {
   phoneIndex = (phoneIndex + 1) % phoneLabels.length;
   phoneScreen.textContent = phoneLabels[phoneIndex];
-  slideButtons.forEach((card, idx) => card.classList.toggle('active', idx === phoneIndex));
+  solutionCards.forEach((card, idx) => card.classList.toggle('active', idx === phoneIndex));
 }, 2200);
 
 const specItems = [...document.querySelectorAll('#specList li')];
@@ -136,6 +134,25 @@ document.querySelectorAll('.tilt').forEach((node) => {
     node.style.transform = '';
   });
 });
+
+const hero = document.querySelector('#hero');
+const heroLeft = document.querySelector('#heroPhoneLeft');
+const heroRight = document.querySelector('#heroPhoneRight');
+if (hero && heroLeft && heroRight) {
+  hero.addEventListener('mousemove', (event) => {
+    const rect = hero.getBoundingClientRect();
+    const dx = (event.clientX - rect.left) / rect.width - 0.5;
+    const dy = (event.clientY - rect.top) / rect.height - 0.5;
+
+    heroLeft.style.transform = `translate3d(${dx * 26}px, ${dy * 18}px, 0) rotateY(${dx * 18}deg) rotateX(${(-dy * 10).toFixed(2)}deg)`;
+    heroRight.style.transform = `translate3d(${dx * -26}px, ${dy * -16}px, 0) rotateY(${dx * -16}deg) rotateX(${(dy * 8).toFixed(2)}deg)`;
+  });
+
+  hero.addEventListener('mouseleave', () => {
+    heroLeft.style.transform = '';
+    heroRight.style.transform = '';
+  });
+}
 
 page.addEventListener('scroll', () => {
   const max = page.scrollHeight - page.clientHeight;
