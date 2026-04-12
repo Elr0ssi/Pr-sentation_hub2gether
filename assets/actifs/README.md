@@ -14,3 +14,7 @@ Tu peux déposer tes visuels PNG ici avec des noms en français.
 - `schema-tam-sam-som.png`
 
 > Astuce : garde des noms simples en minuscules avec des tirets pour éviter les erreurs de chemin.
+
+- `logo-menu.png`
+- `logo-accueil.png`
+- `design-telephone.png`
