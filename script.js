@@ -153,36 +153,6 @@ setInterval(() => {
   impactTabs[impactIndex].click();
 }, 3200);
 
-const projectSteps = [...document.querySelectorAll('#projectSteps .project-step')];
-const projectVisual = document.querySelector('#projectVisual img');
-const projectKpi = document.querySelector('#projectKpi');
-const projectText = document.querySelector('#projectText');
-const projectProgress = document.querySelector('#projectProgress');
-const projectSlides = [
-  { img: 'assets/projet-phase-1.png', kpi: '+31% participation sportive', text: 'Les RH pilotent l’engagement depuis un dashboard unique avec KPIs et suivi d’inscriptions.' },
-  { img: 'assets/projet-phase-2.png', kpi: '+42 équipes activées', text: 'Les managers lancent les premiers défis et structurent les routines sportives par équipe.' },
-  { img: 'assets/projet-phase-3.png', kpi: '-24% absentéisme', text: 'Les salariés adoptent la plateforme, participent aux tournois et reviennent chaque semaine.' }
-];
-let projectIndex = 0;
-
-function setProjectStep(index) {
-  if (!projectSteps.length || !projectKpi || !projectText || !projectProgress) return;
-  projectIndex = ((index % projectSteps.length) + projectSteps.length) % projectSteps.length;
-  const data = projectSlides[projectIndex];
-  projectSteps.forEach((step, i) => step.classList.toggle('active', i === projectIndex));
-  if (projectVisual) projectVisual.src = data.img;
-  projectKpi.textContent = data.kpi;
-  projectText.textContent = data.text;
-  projectProgress.style.width = `${((projectIndex + 1) / projectSteps.length) * 100}%`;
-}
-
-projectSteps.forEach((step, i) => step.addEventListener('click', () => setProjectStep(i)));
-setInterval(() => {
-  if (!projectSteps.length) return;
-  setProjectStep(projectIndex + 1);
-}, 3200);
-setProjectStep(0);
-
 const prevNavButtons = [...document.querySelectorAll('#prevNav .pni')];
 const prevTrack = document.querySelector('#prevTrack');
 const prevSlidesWrap = document.querySelector('.prev-slides');

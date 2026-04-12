@@ -7,9 +7,6 @@ Déposez **tous vos PNG/JPG** dans le dossier `assets/` à la racine du projet.
 | Section | Fichier attendu | Où c'est utilisé |
 |---|---|---|
 | Logo header/hero | `assets/logo-hub2gether.png` | Logo navbar + hero |
-| Projet concret (animation phase 1) | `assets/projet-phase-1.png` | Bloc **Projet concret** étape 01 |
-| Projet concret (animation phase 2) | `assets/projet-phase-2.png` | Bloc **Projet concret** étape 02 |
-| Projet concret (animation phase 3) | `assets/projet-phase-3.png` | Bloc **Projet concret** étape 03 |
 | Interface dashboard | `assets/entreprise-rh.png` | Carousel Interface slide 01 |
 | Interface tournois | `assets/entreprise-tournois.png` | Carousel Interface slide 02 |
 | Interface paiements | `assets/entreprise-paiements.png` | Carousel Interface slide 03 |
