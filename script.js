@@ -26,15 +26,28 @@ function detectCurrentIndex() {
   currentIndex = idx;
 }
 
+let goToFrame;
 function goToIndex(targetIndex) {
   currentIndex = clampIndex(targetIndex);
   isAnimating = true;
-  panels[currentIndex].scrollIntoView({ behavior: 'smooth', block: 'start' });
-  setTimeout(() => {
-    isAnimating = false;
-    wheelAccum = 0;
-    detectCurrentIndex();
-  }, 900);
+  const targetTop = panels[currentIndex].offsetTop;
+  const start = performance.now();
+
+  page.scrollTo({ top: targetTop, behavior: 'smooth' });
+
+  cancelAnimationFrame(goToFrame);
+  const settle = () => {
+    const reached = Math.abs(page.scrollTop - targetTop) < 2;
+    const timeout = performance.now() - start > 1300;
+    if (reached || timeout) {
+      isAnimating = false;
+      wheelAccum = 0;
+      detectCurrentIndex();
+      return;
+    }
+    goToFrame = requestAnimationFrame(settle);
+  };
+  goToFrame = requestAnimationFrame(settle);
 }
 
 
