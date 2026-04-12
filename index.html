@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hub2gether — Présentation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand-wrap"><img class="brand-logo" src="assets/logo-hub2gether.png" alt="Logo Hub2gether" /></div>
+      <nav class="menu">
+        <a href="#constat">Constat</a><a href="#projet">Projet</a><a href="#fonctionnement">SaaS</a><a href="#moment">Pourquoi maintenant</a><a href="#marche">Marché</a><a href="#retours">Retours</a><a href="#modele">Modèle éco</a><a href="#previsions">Prévisions</a><a href="#concurrents">Concurrents</a>
+      </nav>
+      <div class="top-actions"><button id="openPrototype" class="proto-btn">Prototype</button></div>
+    </header>
+    <div class="progress"><span id="progressBar"></span></div>
+
+    <main id="page">
+      <section class="panel light" id="constat">
+        <div class="container split fade-in">
+          <div>
+            <span class="tag">Constat</span>
+            <h2>Un besoin évident, une pratique encore faible.</h2>
+            <p>87% des dirigeants sont convaincus des bienfaits du sport en entreprise, mais seulement 16% des salariés pratiquent dans un cadre structuré.</p>
+          </div>
+          <div class="stat-grid">
+            <article><b>87%</b><p>dirigeants convaincus</p></article>
+            <article><b>16%</b><p>salariés pratiquants</p></article>
+            <article><b>+ opportunité</b><p>gap entre conviction et exécution</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel dark" id="projet">
+        <div class="container fade-in value-block">
+          <span class="tag">Présentation du projet</span>
+          <h2>Hub2gether : la plateforme SaaS qui transforme le sport en levier de cohésion et de performance.</h2>
+          <div class="value-carousel" id="valueCarousel">
+            <article class="value-slide active"><h3>Pour les entreprises</h3><p>Pilotage RH, animation de communautés, suivi engagement et impact.</p></article>
+            <article class="value-slide"><h3>Pour les salariés</h3><p>Matchmaking, tournois, challenges et expérience sportive simple.</p></article>
+          </div>
+          <div class="dots"><button class="dot active" data-v="0"></button><button class="dot" data-v="1"></button></div>
+        </div>
+      </section>
+
+      <section class="panel green" id="fonctionnement">
+        <div class="container saas-layout fade-in">
+          <aside id="saasNav">
+            <button class="saas-step active" data-step="0">01 Dashboard RH</button>
+            <button class="saas-step" data-step="1">02 Organisation tournois</button>
+            <button class="saas-step" data-step="2">03 Paiements & gestion</button>
+            <button class="saas-step" data-step="3">04 Partenaires & terrains</button>
+          </aside>
+          <div class="saas-view">
+            <img id="saasImage" src="assets/saas-dashboard.png" alt="SaaS Hub2gether" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+            <div class="placeholder" style="display:none;">Ajoutez: assets/saas-dashboard.png / saas-tournois.png / saas-paiements.png / saas-partenaires.png</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel light" id="moment">
+        <div class="container fade-in">
+          <span class="tag">Pourquoi maintenant ?</span>
+          <h2>Bien-être au travail, héritage post-covid et élan JO : le momentum est là.</h2>
+          <div class="chip-row"><span>Budgets QVT en hausse</span><span>Nouveaux usages hybrides</span><span>Engouement sportif renforcé</span><span>Découverte de nouveaux sports</span></div>
+        </div>
+      </section>
+
+      <section class="panel dark" id="marche">
+        <div class="container fade-in">
+          <span class="tag">Taille du marché</span>
+          <h2>TAM · SAM · SOM : un positionnement progressif et crédible.</h2>
+          <div class="tam-grid">
+            <article><h4>TAM</h4><p>Marché global du bien-être & sport corporate.</p></article>
+            <article><h4>SAM</h4><p>Entreprises françaises équipables à court terme.</p></article>
+            <article><h4>SOM</h4><p>Part accessible via notre go-to-market.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel green" id="retours">
+        <div class="container fade-in">
+          <span class="tag">Retour terrain</span>
+          <h2>Les formulaires confirment l’attente d’une solution simple et structurée.</h2>
+          <div class="cards-3"><article><b>Top besoin</b><p>Créer de la cohésion d’équipe.</p></article><article><b>Frein actuel</b><p>Manque de temps et d’outils.</p></article><article><b>Attente</b><p>Une plateforme centralisée et ludique.</p></article></div>
+        </div>
+      </section>
+
+      <section class="panel light" id="modele">
+        <div class="container fade-in">
+          <span class="tag">Modèle éco</span>
+          <h2>Des offres SaaS adaptées à chaque taille d’entreprise.</h2>
+          <div class="offers"><article class="active"><h4>Starter</h4><p>PME</p><b>99€/mois</b></article><article><h4>Growth</h4><p>Scale-up</p><b>249€/mois</b></article><article><h4>Business</h4><p>ETI</p><b>499€/mois</b></article></div>
+        </div>
+      </section>
+
+      <section class="panel dark" id="previsions">
+        <div class="container fade-in">
+          <span class="tag">Prévisions</span>
+          <h2>Trajectoire vers la rentabilité avec montée en volume.</h2>
+          <div class="forecast"><article><b>Y1</b><p>Acquisition</p></article><article><b>Y2</b><p>Accélération</p></article><article><b>Y3</b><p>Rentabilité</p></article><article><b>Y5</b><p>Scale national</p></article></div>
+        </div>
+      </section>
+
+      <section class="panel green" id="concurrents">
+        <div class="container fade-in">
+          <span class="tag">Concurrents</span>
+          <h2>Une approche plus complète : RH + engagement + opérationnel.</h2>
+          <div class="competitor-image"><img src="assets/concurrents-map.png" alt="Concurrents" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" /><div class="placeholder" style="display:none;">Ajoutez: assets/concurrents-map.png</div></div>
+        </div>
+      </section>
+    </main>
+
+    <div class="prototype-overlay" id="prototypeOverlay" aria-hidden="true">
+      <button class="prototype-close" id="closePrototype">Fermer ✕</button>
+      <iframe src="https://embed.figma.com/proto/1LmcdsnGugJWzHns6nZ4PB/Workflow-HUB2?node-id=281-835&p=f&scaling=min-zoom&content-scaling=fixed&page-id=175%3A3&starting-point-node-id=175%3A4&embed-host=share" allowfullscreen></iframe>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
