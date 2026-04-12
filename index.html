@@ -15,7 +15,7 @@
         <img class="brand-logo" src="assets/logo-hub2gether.png" alt="Logo Hub2gether" />
       </div>
       <nav class="menu">
-        <a href="#hero">Accueil</a><a href="#projet-concret">Projet</a><a href="#interface-detail">Interface</a><a href="#probleme">Problème</a><a href="#solution">Solution</a><a href="#produit">Produit</a><a href="#marche">Marché</a><a href="#business">Business</a><a href="#concurrence">Concurrence</a><a href="#projections">Projections</a><a href="#prototype">Prototype</a><a href="#cta">CTA</a>
+        <a href="#hero">Accueil</a><a href="#projet-concret">Projet</a><a href="#interface-detail">Interface</a><a href="#probleme">Problème</a><a href="#solution">Solution</a><a href="#produit">Produit</a><a href="#marche">Marché</a><a href="#business">Business</a><a href="#concurrence">Concurrence</a><a href="#projections">Projections</a><a href="#cta">CTA</a>
       </nav>
       <div class="top-actions"><button id="openPrototype" class="proto-btn">Prototype</button><a href="#cta">Investir</a></div>
     </header>
@@ -47,25 +47,29 @@
       </section>
 
       <section class="panel light" id="interface-detail">
-        <div class="container fade-in explore-layout" id="exploreBlock">
-          <aside>
-            <h3>Explorez l'interface</h3>
-            <p>↓ Scrollez pour naviguer</p>
-            <div class="explore-nav" id="exploreNav">
-              <button class="active" data-step="0">01 Dashboard RH</button>
-              <button data-step="1">02 Tournois</button>
-              <button data-step="2">03 Paiements</button>
-              <button data-step="3">04 Partenaires</button>
-              <button data-step="4">05 Votre capture</button>
-            </div>
-          </aside>
-          <div class="explore-stage" aria-label="Carousel interface">
-            <div class="explore-track" id="exploreTrack">
-              <article class="explore-slide active"><div class="shot">Ajoutez: assets/entreprise-rh.png</div><div class="explore-copy"><small>01 Dashboard</small><h4>Vue globale en temps réel</h4><p>KPIs RH, engagement des salariés et activité équipe.</p></div></article>
-              <article class="explore-slide"><div class="shot">Ajoutez: assets/entreprise-tournois.png</div><div class="explore-copy"><small>02 Tournois</small><h4>Compétitions inter-équipes</h4><p>Brackets automatiques, rounds fluides et suivi des scores.</p></div></article>
-              <article class="explore-slide"><div class="shot">Ajoutez: assets/entreprise-paiements.png</div><div class="explore-copy"><small>03 Paiements</small><h4>Collecte sans friction</h4><p>Quotes-parts et remboursements simplifiés pour toutes les équipes.</p></div></article>
-              <article class="explore-slide"><div class="shot">Ajoutez: assets/entreprise-partenaires.png</div><div class="explore-copy"><small>04 Partenaires</small><h4>Réseau exclusif de terrains</h4><p>Tarifs négociés, réservation rapide et accès simplifié.</p></div></article>
-              <article class="explore-slide"><div class="shot">Ajoutez: assets/entreprise-capture.png</div><div class="explore-copy"><small>05 Capture</small><h4>Intégrez votre écran clé</h4><p>Ajoutez votre propre vue produit pour personnaliser la démo.</p></div></article>
+        <div class="container fade-in">
+          <div class="explore-carousel">
+            <div class="prev-sticky">
+              <aside class="prev-side">
+                <div class="prev-side-title">Explorez<br>l'interface</div>
+                <p class="prev-side-hint">↓ Cliquez pour naviguer</p>
+                <div class="prev-nav-items" id="prevNav">
+                  <button class="pni on" data-pi="0"><span class="pni-num">01</span><span>Dashboard RH</span></button>
+                  <button class="pni" data-pi="1"><span class="pni-num">02</span><span>Tournois</span></button>
+                  <button class="pni" data-pi="2"><span class="pni-num">03</span><span>Paiements</span></button>
+                  <button class="pni" data-pi="3"><span class="pni-num">04</span><span>Partenaires</span></button>
+                  <button class="pni" data-pi="4"><span class="pni-num">05</span><span>Votre capture</span></button>
+                </div>
+              </aside>
+              <div class="prev-slides">
+                <div class="prev-track" id="prevTrack">
+                  <article class="pslide active"><div class="pslide-frame"><div class="preview-screen"><img src="assets/entreprise-rh.png" alt="Dashboard RH" onerror="this.style.display='none'; this.parentElement.querySelector('.preview-fallback').style.display='block';"/><div class="preview-fallback" style="display:none;">Ajoutez: assets/entreprise-rh.png</div></div></div><div class="pslide-info"><p class="psi-num">01</p><div class="psi-label">Dashboard</div><h3 class="psi-title">Vue globale en temps réel</h3><p class="psi-desc">KPIs RH, engagement des salariés et activité équipe.</p></div></article>
+                  <article class="pslide"><div class="pslide-frame"><div class="preview-screen"><img src="assets/entreprise-tournois.png" alt="Tournois" onerror="this.style.display='none'; this.parentElement.querySelector('.preview-fallback').style.display='block';"/><div class="preview-fallback" style="display:none;">Ajoutez: assets/entreprise-tournois.png</div></div></div><div class="pslide-info"><p class="psi-num">02</p><div class="psi-label">Tournois</div><h3 class="psi-title">Compétitions inter-équipes</h3><p class="psi-desc">Brackets, rounds automatiques et finales en interne.</p></div></article>
+                  <article class="pslide"><div class="pslide-frame"><div class="preview-screen"><img src="assets/entreprise-paiements.png" alt="Paiements" onerror="this.style.display='none'; this.parentElement.querySelector('.preview-fallback').style.display='block';"/><div class="preview-fallback" style="display:none;">Ajoutez: assets/entreprise-paiements.png</div></div></div><div class="pslide-info"><p class="psi-num">03</p><div class="psi-label">Paiements</div><h3 class="psi-title">Collecte sans friction</h3><p class="psi-desc">Quotes-parts, remboursements et suivi simplifié.</p></div></article>
+                  <article class="pslide"><div class="pslide-frame"><div class="preview-screen"><img src="assets/entreprise-partenaires.png" alt="Partenaires" onerror="this.style.display='none'; this.parentElement.querySelector('.preview-fallback').style.display='block';"/><div class="preview-fallback" style="display:none;">Ajoutez: assets/entreprise-partenaires.png</div></div></div><div class="pslide-info"><p class="psi-num">04</p><div class="psi-label">Partenaires</div><h3 class="psi-title">Réseau exclusif de terrains</h3><p class="psi-desc">Tarifs négociés et accès simplifié à vos infrastructures.</p></div></article>
+                  <article class="pslide"><div class="pslide-frame"><div class="preview-screen"><img src="assets/entreprise-custom.png" alt="Votre capture" onerror="this.style.display='none'; this.parentElement.querySelector('.preview-fallback').style.display='block';"/><div class="preview-fallback" style="display:none;">Ajoutez: assets/entreprise-custom.png</div></div></div><div class="pslide-info"><p class="psi-num">05</p><div class="psi-label">Votre capture</div><h3 class="psi-title">Vos propres screenshots</h3><p class="psi-desc">Remplacez ce visuel par votre meilleur écran produit.</p></div></article>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -100,7 +104,7 @@
       <section class="panel light" id="vision"><div class="container fade-in"><span class="tag">Vision</span><h3>Construire le premier réseau sportif inter-entreprises</h3><div class="text-design">Ligue corporate, événements nationaux, effets réseau multi-entreprises.</div></div></section>
 
 
-      <section class="panel dark" id="prototype"><div class="container fade-in"><span class="tag">Prototype</span><h3>Prototype produit (Figma intégré)</h3><div class="figma-wrap"><iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/proto/1LmcdsnGugJWzHns6nZ4PB/Workflow-HUB2?node-id=281-835&p=f&scaling=min-zoom&content-scaling=fixed&page-id=175%3A3&starting-point-node-id=175%3A4&embed-host=share" allowfullscreen></iframe></div></div></section>
+      
 
       <section class="panel dark final" id="cta"><div class="container fade-in"><h3>Rejoignez-nous dans la transformation du sport en entreprise</h3><div class="cta-row"><a class="btn" href="#">Investir</a><a class="btn ghost" href="#">Demander une démo</a></div></div></section>
     </main>

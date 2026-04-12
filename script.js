@@ -140,41 +140,37 @@ setInterval(() => {
   impactTabs[impactIndex].click();
 }, 3200);
 
-const exploreButtons = [...document.querySelectorAll('#exploreNav button')];
-const exploreTrack = document.querySelector('#exploreTrack');
-const exploreStage = document.querySelector('.explore-stage');
-const exploreSlides = [...document.querySelectorAll('#exploreTrack .explore-slide')];
-let exploreIndex = 0;
-function updateExploreTrackPosition(index) {
-  if (!exploreTrack || !exploreStage || !exploreSlides[index]) return;
-  const activeSlide = exploreSlides[index];
-  const target = exploreStage.clientWidth / 2 - (activeSlide.offsetLeft + activeSlide.offsetWidth / 2);
-  exploreTrack.style.transform = `translateX(${target}px)`;
+const prevNavButtons = [...document.querySelectorAll('#prevNav .pni')];
+const prevTrack = document.querySelector('#prevTrack');
+const prevSlidesWrap = document.querySelector('.prev-slides');
+const prevSlides = [...document.querySelectorAll('#prevTrack .pslide')];
+let prevIndex = 0;
+
+function updatePreviewTrackPosition(index) {
+  if (!prevTrack || !prevSlidesWrap || !prevSlides[index]) return;
+  const activeSlide = prevSlides[index];
+  const target = prevSlidesWrap.clientWidth / 2 - (activeSlide.offsetLeft + activeSlide.offsetWidth / 2);
+  prevTrack.style.transform = `translateX(${target}px)`;
 }
 
-function setExplore(index) {
-  if (!exploreTrack || !exploreButtons.length) return;
-  exploreIndex = ((index % exploreButtons.length) + exploreButtons.length) % exploreButtons.length;
-  exploreButtons.forEach((btn, i) => btn.classList.toggle('active', i === exploreIndex));
-  exploreSlides.forEach((slide, i) => slide.classList.toggle('active', i === exploreIndex));
-  updateExploreTrackPosition(exploreIndex);
+function setPreviewSlide(index) {
+  if (!prevSlides.length || !prevNavButtons.length) return;
+  prevIndex = ((index % prevSlides.length) + prevSlides.length) % prevSlides.length;
+  prevSlides.forEach((slide, i) => slide.classList.toggle('active', i === prevIndex));
+  prevNavButtons.forEach((btn, i) => btn.classList.toggle('on', i === prevIndex));
+  updatePreviewTrackPosition(prevIndex);
 }
 
-exploreButtons.forEach((btn, i) => btn.addEventListener('click', () => setExplore(i)));
-exploreSlides.forEach((slide, i) => {
-  slide.addEventListener('click', () => setExplore(i));
-});
-
-if (exploreStage) {
-  exploreStage.addEventListener('click', (event) => {
-    if (event.target.closest('.explore-slide')) return;
-    setExplore(exploreIndex + 1);
+prevNavButtons.forEach((btn, i) => btn.addEventListener('click', () => setPreviewSlide(i)));
+prevSlides.forEach((slide, i) => slide.addEventListener('click', () => setPreviewSlide(i)));
+if (prevSlidesWrap) {
+  prevSlidesWrap.addEventListener('click', (event) => {
+    if (event.target.closest('.pslide')) return;
+    setPreviewSlide(prevIndex + 1);
   });
 }
-
-window.addEventListener('resize', () => updateExploreTrackPosition(exploreIndex));
-setExplore(0);
-
+window.addEventListener('resize', () => updatePreviewTrackPosition(prevIndex));
+setPreviewSlide(0);
 
 
 const openPrototypeBtn = document.querySelector('#openPrototype');
