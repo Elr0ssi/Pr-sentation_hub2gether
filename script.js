@@ -44,7 +44,7 @@ let projectStage = 0;
 
 function setProjectStage(stage) {
   if (!projectViewport) return;
-  projectStage = Math.max(0, Math.min(2, stage));
+  projectStage = Math.max(0, Math.min(1, stage));
   projectViewport.dataset.stage = String(projectStage);
   projectStageDots.forEach((dot, i) => dot.classList.toggle('active', i === projectStage));
 }
@@ -53,7 +53,7 @@ function handleProjectWheel(direction) {
   const activePanel = panels[currentIndex];
   if (!projectViewport || !activePanel || activePanel.id !== 'presentation-projet') return false;
   const nextStage = projectStage + direction;
-  if (nextStage >= 0 && nextStage <= 2) {
+  if (nextStage >= 0 && nextStage <= 1) {
     setProjectStage(nextStage);
     return true;
   }

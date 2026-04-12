@@ -17,7 +17,7 @@
       <nav class="menu">
         <a href="#hero">Accueil</a><a href="#projet-concret">Constat</a><a href="#presentation-projet">Présentation</a><a href="#interface-detail">Prototype</a><a href="#pourquoi-maintenant">Pourquoi maintenant</a><a href="#solution">Solution</a><a href="#produit">Produit</a><a href="#marche">Marché</a><a href="#business">Business</a><a href="#projections">Projections</a><a href="#cta">CTA</a>
       </nav>
-      <div class="top-actions"><button id="openPrototype" class="proto-btn">Prototype</button><a href="#cta">Investir</a></div>
+      <div class="top-actions"><button id="openPrototype" class="proto-btn">Prototype</button><button id="toggleFullscreen" class="proto-btn ghost-full">Plein écran</button><a href="#cta">Investir</a></div>
     </header>
     <div class="progress"><span id="progressBar"></span></div>
 
@@ -69,45 +69,27 @@
           <h3>HUB2GETHER structure, connecte et mesure le sport en entreprise pour créer de la valeur RH mesurable.</h3>
           <div class="project-scroll" id="projectScroll">
             <div class="project-stage-head">
-              <button class="project-stage-dot active" data-stage="0">01</button>
-              <button class="project-stage-dot" data-stage="1">02</button>
-              <button class="project-stage-dot" data-stage="2">03</button>
+              <button class="project-stage-dot active" data-stage="0">Entreprises</button>
+              <button class="project-stage-dot" data-stage="1">Salariés</button>
             </div>
-            <div class="project-stage-viewport project-board" id="projectStageViewport" data-stage="0">
-              <article class="project-side side-left">
-                <div class="project-side-cap"></div>
-                <img src="assets/actifs/visuel-gauche-entreprise.png" alt="Visuel entreprise gauche" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
-                <div class="project-side-fallback" style="display:none;">Ajoutez : assets/actifs/visuel-gauche-entreprise.png</div>
+            <div class="project-stage-viewport project-split" id="projectStageViewport" data-stage="0">
+              <article class="split-pane pane-entreprise">
+                <h4>POUR LES ENTREPRISES</h4>
+                <ul>
+                  <li>Cohésion des équipes et de l’entreprise renforcée.</li>
+                  <li>Amélioration du bien-être et de l’engagement au travail.</li>
+                  <li>Plus forte participation aux évènements coopératifs.</li>
+                  <li>Marque employeur modernisée autour du sport.</li>
+                </ul>
               </article>
-
-              <article class="project-center">
-                <div class="project-empty">Faites défiler pour afficher le contenu Entreprises puis Salariés.</div>
-
-                <div class="project-focus entreprise" data-role="entreprise">
-                  <h4>POUR LES ENTREPRISES</h4>
-                  <ul>
-                    <li>Cohésion des équipes et de l’entreprise renforcée.</li>
-                    <li>Amélioration du bien-être et de l’engagement au travail.</li>
-                    <li>Plus forte participation aux évènements coopératifs.</li>
-                    <li>Marque employeur modernisée autour du sport.</li>
-                  </ul>
-                </div>
-
-                <div class="project-focus salarie" data-role="salarie">
-                  <h4>POUR LES SALARIÉS</h4>
-                  <ul>
-                    <li>Centralisation des échanges sportifs internes.</li>
-                    <li>Organisation des groupes sportifs facilitée.</li>
-                    <li>Networking interne/externe amélioré.</li>
-                    <li>Pratique sportive en entreprise simplifiée.</li>
-                  </ul>
-                </div>
-              </article>
-
-              <article class="project-side side-right">
-                <div class="project-side-cap"></div>
-                <img src="assets/actifs/visuel-droite-salaries.png" alt="Visuel salariés droite" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
-                <div class="project-side-fallback" style="display:none;">Ajoutez : assets/actifs/visuel-droite-salaries.png</div>
+              <article class="split-pane pane-salarie">
+                <h4>POUR LES SALARIÉS</h4>
+                <ul>
+                  <li>Centralisation des échanges sportifs internes.</li>
+                  <li>Organisation des groupes sportifs facilitée.</li>
+                  <li>Networking interne/externe amélioré.</li>
+                  <li>Pratique sportive en entreprise simplifiée.</li>
+                </ul>
               </article>
             </div>
           </div>

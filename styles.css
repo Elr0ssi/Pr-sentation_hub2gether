@@ -5,7 +5,7 @@
 .menu{display:flex;gap:18px;flex-wrap:wrap;justify-content:center}.menu a{color:#1b2a22;text-decoration:none;font-size:.96rem;font-weight:600}.menu a:hover{color:#000}
 .top-actions a{color:#0f2019;text-decoration:none;border:1px solid rgba(16,24,20,.2);border-radius:999px;padding:9px 16px;background:rgba(16,24,20,.05)}
 
-.proto-btn{border:1px solid rgba(16,24,20,.2);background:#ffffff;color:#062014;border-radius:999px;padding:9px 14px;font-weight:800;cursor:pointer}
+.proto-btn{border:1px solid rgba(16,24,20,.2);background:#ffffff;color:#062014;border-radius:999px;padding:9px 14px;font-weight:800;cursor:pointer}.proto-btn.ghost-full{background:#0f211a;color:#fff;border-color:rgba(255,255,255,.18)}
 .top-actions{display:flex;gap:8px;align-items:center}
 .prototype-overlay{position:fixed;inset:0;z-index:200;background:#0a0d12;display:none;place-items:center;padding:12px}
 .prototype-overlay.open{display:grid}
@@ -118,25 +118,22 @@ p{color:var(--muted)} .tag{display:inline-flex;margin-bottom:12px;border:1px sol
 
 .project-scroll{margin-top:18px;display:grid;gap:12px}
 .project-stage-head{display:flex;gap:10px}
-.project-stage-dot{width:42px;height:42px;border-radius:999px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);color:#d8efdf;font-weight:700;cursor:pointer}
+.project-stage-dot{border-radius:999px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);color:#d8efdf;font-weight:700;cursor:pointer;padding:10px 16px}
 .project-stage-dot.active{background:var(--mint);color:#062014;border-color:var(--mint)}
-.project-board{display:grid;grid-template-columns:1fr 1.35fr 1fr;gap:18px;align-items:stretch;min-height:540px;border:1px solid rgba(0,255,144,.45);border-radius:28px;padding:18px;background:radial-gradient(circle at 80% 10%, rgba(0,255,140,.15), transparent 36%),linear-gradient(145deg,#032a22,#052d25);box-shadow:0 35px 80px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.04)}
-.project-side{position:relative;border-radius:24px;background:linear-gradient(180deg,rgba(163,186,176,.5),rgba(54,86,74,.9));overflow:hidden;border:1px solid rgba(255,255,255,.16)}
-.project-side::after{content:'';position:absolute;inset:auto 14px 12px 14px;height:3px;border-radius:999px;background:rgba(0,255,162,.35)}
-.project-side-cap{height:82px;background:rgba(216,227,222,.34);backdrop-filter:blur(3px);border-radius:0 0 22px 22px}
-.project-side img{width:100%;height:calc(100% - 82px);object-fit:cover;display:block;filter:saturate(1.08)}
-.project-side-fallback{height:calc(100% - 82px);display:grid;place-items:center;padding:20px;color:#e3efea;text-align:center}
-.project-center{position:relative;background:linear-gradient(180deg,#fcfcfc,#f0f3f2);border-radius:28px;overflow:hidden;border:1px solid rgba(7,47,35,.12)}
-.project-center h4{margin:0;padding:24px 22px;background:linear-gradient(180deg,#edf0ef,#dfe4e2);color:#0f3127;text-align:center;font-size:2rem;letter-spacing:.02em}
-.project-empty{position:absolute;inset:0;display:grid;place-items:center;color:#4d665c;font-weight:700;transition:.45s ease;padding:20px;text-align:center;background:radial-gradient(circle at 50% 40%, rgba(10,95,64,.08), transparent 50%)}
-.project-focus{position:absolute;inset:0;opacity:0;transform:translateX(26%);transition:.55s cubic-bezier(.16,1,.3,1)}
-.project-focus ul{margin:0;padding:24px 28px 26px;display:grid;gap:12px;list-style:none;color:#17362d}
-.project-focus li{line-height:1.4;font-weight:600;background:#fff;border:1px solid rgba(15,49,39,.13);border-radius:14px;padding:12px 14px;box-shadow:0 8px 18px rgba(17,41,33,.08)}
-.project-stage-viewport[data-stage="0"] .project-empty{opacity:1;transform:none}
-.project-stage-viewport[data-stage="1"] .project-empty,.project-stage-viewport[data-stage="2"] .project-empty{opacity:0;transform:translateY(-10px)}
-.project-stage-viewport[data-stage="1"] .project-focus.entreprise{opacity:1;transform:translateX(0)}
-.project-stage-viewport[data-stage="2"] .project-focus.entreprise{opacity:0;transform:translateX(-34%)}
-.project-stage-viewport[data-stage="2"] .project-focus.salarie{opacity:1;transform:translateX(0)}
+.project-split{display:grid;grid-template-columns:1.45fr .55fr;gap:14px;min-height:500px;background:linear-gradient(155deg,#06271f,#0d3b2f);padding:16px;border-radius:24px;border:1px solid rgba(125,211,173,.35)}
+.split-pane{border-radius:20px;padding:22px;transition:all .45s cubic-bezier(.16,1,.3,1);overflow:hidden;display:grid;align-content:start;gap:10px}
+.split-pane h4{margin:0;font-size:1.8rem}
+.split-pane ul{margin:0;padding-left:18px;display:grid;gap:10px}
+.split-pane li{line-height:1.35}
+.pane-entreprise{background:linear-gradient(180deg,#f6f7f7,#e8edeb);color:#0f3127;box-shadow:0 12px 30px rgba(0,0,0,.18)}
+.pane-salarie{background:linear-gradient(180deg,rgba(255,255,255,.2),rgba(255,255,255,.08));color:#e7f4ee;border:1px solid rgba(255,255,255,.2)}
+.project-stage-viewport[data-stage="0"]{grid-template-columns:1.45fr .55fr}
+.project-stage-viewport[data-stage="1"]{grid-template-columns:.55fr 1.45fr}
+.project-stage-viewport[data-stage="0"] .pane-entreprise{grid-column:span 1;transform:scale(1.02)}
+.project-stage-viewport[data-stage="0"] .pane-salarie{opacity:.72;transform:scale(.94)}
+.project-stage-viewport[data-stage="1"] .pane-entreprise{opacity:.72;transform:scale(.94)}
+.project-stage-viewport[data-stage="1"] .pane-salarie{transform:scale(1.02);background:linear-gradient(180deg,#f6f7f7,#e8edeb);color:#0f3127;border:none;box-shadow:0 12px 30px rgba(0,0,0,.18)}
+.project-stage-viewport[data-stage="1"] .pane-salarie li{color:#0f3127}
 
 .why-now-wrap{display:grid;gap:14px}
 .why-now-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
@@ -154,11 +151,8 @@ p{color:var(--muted)} .tag{display:inline-flex;margin-bottom:12px;border:1px sol
 .market-caption{max-width:860px}
 
 @media (max-width:980px){
-  .project-board,.why-now-grid{grid-template-columns:1fr}
-  .project-side{min-height:180px;border-radius:18px}
-  .project-side.side-right{border-radius:18px}
-  .project-center{min-height:360px;border-radius:18px}
-  .project-center h4{font-size:1.45rem}
+  .project-split,.why-now-grid{grid-template-columns:1fr}
+  .split-pane{min-height:220px}
   .market-circles{min-height:520px}
   .market-circles .tam{left:8%;top:20px}
   .market-circles .sam{left:24%;top:150px}
