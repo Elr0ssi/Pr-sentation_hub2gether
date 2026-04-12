@@ -5,6 +5,8 @@ Tu peux déposer tes visuels PNG ici avec des noms en français.
 ## Fichiers déjà référencés dans la section "Présentation du projet"
 - `visuel-gauche-entreprise.png`
 - `visuel-droite-salaries.png`
+- `visuel-bas-entreprise.png`
+- `visuel-bas-salarie.png`
 
 ## Proposition de noms supplémentaires (optionnel)
 - `fond-constat.png`
