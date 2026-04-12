@@ -217,3 +217,39 @@ page.addEventListener('scroll', () => {
 });
 
 detectCurrentIndex();
+
+
+const toggleFullscreenBtn = document.querySelector('#toggleFullscreen');
+if (toggleFullscreenBtn) {
+  toggleFullscreenBtn.addEventListener('click', async () => {
+    try {
+      if (!document.fullscreenElement) {
+        await document.documentElement.requestFullscreen();
+        toggleFullscreenBtn.textContent = '⤢ Quitter plein écran';
+      } else {
+        await document.exitFullscreen();
+        toggleFullscreenBtn.textContent = '⛶ Plein écran';
+      }
+    } catch (error) {
+      console.warn("Impossible d'activer le plein écran automatiquement.", error);
+    }
+  });
+
+  document.addEventListener('fullscreenchange', () => {
+    toggleFullscreenBtn.textContent = document.fullscreenElement ? '⤢ Quitter plein écran' : '⛶ Plein écran';
+  });
+}
+
+document.addEventListener('keydown', (event) => {
+  if (window.innerWidth <= 980 || isAnimating) return;
+  if (event.key === 'ArrowDown' || event.key === 'PageDown') {
+    event.preventDefault();
+    if (handleProjectWheel(1) || handlePreviewWheel(1)) return;
+    goToIndex(currentIndex + 1);
+  }
+  if (event.key === 'ArrowUp' || event.key === 'PageUp') {
+    event.preventDefault();
+    if (handleProjectWheel(-1) || handlePreviewWheel(-1)) return;
+    goToIndex(currentIndex - 1);
+  }
+});
