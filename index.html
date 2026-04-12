@@ -34,14 +34,26 @@
 
 
       <section class="panel green" id="projet-concret">
-        <div class="container fade-in impact-block">
+        <div class="container fade-in project-story" id="projectStory">
           <span class="tag">Projet concret</span>
-          <div class="impact-kpis"><article><b>+31%</b><p>participation sportive après lancement</p></article><article><b>-24%</b><p>absentéisme dans les équipes actives</p></article></div>
-          <div class="impact-tabs" id="impactTabs"><button class="active" data-target="rh">Direction RH</button><button data-target="manager">Managers</button><button data-target="employee">Salariés</button></div>
-          <div class="impact-panels">
-            <div class="impact-panel active" data-panel="rh"><div>Tableau de bord unique RH</div><div>Classements inter-équipes</div><div>Tournois récurrents</div></div>
-            <div class="impact-panel" data-panel="manager"><div>Moins de silos d'équipe</div><div>Rituels collectifs pilotables</div><div>Plus de collaboration transverse</div></div>
-            <div class="impact-panel" data-panel="employee"><div>Intégration plus rapide</div><div>Progression visible et motivante</div><div>Expérience collective engageante</div></div>
+          <h3>Un déploiement en 3 phases, animé en direct</h3>
+          <div class="project-layout">
+            <div class="project-steps" id="projectSteps">
+              <button class="project-step active" data-step="0"><span>01</span><div><b>Lancement RH</b><small>Paramétrage, import équipes, onboarding.</small></div></button>
+              <button class="project-step" data-step="1"><span>02</span><div><b>Activation managers</b><small>Rituels, défis d'équipes, premiers matchs.</small></div></button>
+              <button class="project-step" data-step="2"><span>03</span><div><b>Adoption salariés</b><small>Tournois internes, classements, rétention.</small></div></button>
+            </div>
+            <div class="project-stage">
+              <div class="project-visual" id="projectVisual">
+                <img src="assets/projet-phase-1.png" alt="Phase projet" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+                <div class="placeholder" style="display:none;">Ajoutez: assets/projet-phase-1.png à 3</div>
+              </div>
+              <div class="project-caption">
+                <p class="project-kpi" id="projectKpi">+31% participation sportive</p>
+                <p id="projectText">Les RH pilotent l’engagement depuis un dashboard unique avec KPIs et suivi d’inscriptions.</p>
+              </div>
+              <div class="project-progress"><span id="projectProgress"></span></div>
+            </div>
           </div>
         </div>
       </section>
