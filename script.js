@@ -174,10 +174,6 @@ if (exploreStage) {
 
 window.addEventListener('resize', () => updateExploreTrackPosition(exploreIndex));
 setExplore(0);
-setInterval(() => {
-  if (!exploreButtons.length) return;
-  setExplore(exploreIndex + 1);
-}, 2800);
 
 
 
