@@ -15,7 +15,7 @@
         <img class="brand-logo" src="assets/logo-hub2gether.png" alt="Logo Hub2gether" />
       </div>
       <nav class="menu">
-        <a href="#hero">Accueil</a><a href="#projet-concret">Projet</a><a href="#interface-detail">Interface</a><a href="#probleme">Problème</a><a href="#solution">Solution</a><a href="#produit">Produit</a><a href="#marche">Marché</a><a href="#business">Business</a><a href="#concurrence">Concurrence</a><a href="#projections">Projections</a><a href="#cta">CTA</a>
+        <a href="#hero">Accueil</a><a href="#projet-concret">Constat</a><a href="#presentation-projet">Présentation</a><a href="#interface-detail">Prototype</a><a href="#pourquoi-maintenant">Pourquoi maintenant</a><a href="#solution">Solution</a><a href="#produit">Produit</a><a href="#marche">Marché</a><a href="#business">Business</a><a href="#projections">Projections</a><a href="#cta">CTA</a>
       </nav>
       <div class="top-actions"><button id="openPrototype" class="proto-btn">Prototype</button><a href="#cta">Investir</a></div>
     </header>
@@ -33,11 +33,10 @@
 
 
 
-      <section class="panel green" id="projet-concret">
-        <div class="container fade-in problem-block">
-          <span class="tag">Le problème</span>
-          <h3>Un énorme potentiel, encore peu activé</h3>
-          <p class="problem-lead">Le sujet est reconnu comme stratégique, mais l’exécution en entreprise reste trop faible.</p>
+      <section class="panel light" id="projet-concret">
+        <div class="container fade-in problem-block constat-block">
+          <h3>Constat (Pain Point)</h3>
+          <p class="problem-lead">Le sujet est reconnu comme stratégique, mais l’exécution en entreprise reste encore trop faible.</p>
 
           <div class="problem-visual-wrap">
             <div class="problem-illustration pulse-card">
@@ -61,6 +60,57 @@
           </div>
 
           <p class="problem-source">Sources : Étude « Sport en Entreprise » (MEDEF, CNOSF, Ministère des Sports, Union Sport & Cycle, 2017) et « Les chiffres du sport et du bien-être en entreprise » (2022).</p>
+        </div>
+      </section>
+
+      <section class="panel dark" id="presentation-projet">
+        <div class="container fade-in">
+          <span class="tag">Présentation du projet</span>
+          <h3>HUB2GETHER structure, connecte et mesure le sport en entreprise pour créer de la valeur RH mesurable.</h3>
+          <div class="project-scroll" id="projectScroll">
+            <div class="project-stage-head">
+              <button class="project-stage-dot active" data-stage="0">01</button>
+              <button class="project-stage-dot" data-stage="1">02</button>
+              <button class="project-stage-dot" data-stage="2">03</button>
+            </div>
+            <div class="project-stage-viewport project-board" id="projectStageViewport" data-stage="0">
+              <article class="project-side side-left">
+                <div class="project-side-cap"></div>
+                <img src="assets/actifs/visuel-gauche-entreprise.png" alt="Visuel entreprise gauche" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+                <div class="project-side-fallback" style="display:none;">Ajoutez : assets/actifs/visuel-gauche-entreprise.png</div>
+              </article>
+
+              <article class="project-center">
+                <div class="project-empty">Faites défiler pour afficher le contenu Entreprises puis Salariés.</div>
+
+                <div class="project-focus entreprise" data-role="entreprise">
+                  <h4>POUR LES ENTREPRISES</h4>
+                  <ul>
+                    <li>Cohésion des équipes et de l’entreprise renforcée.</li>
+                    <li>Amélioration du bien-être et de l’engagement au travail.</li>
+                    <li>Plus forte participation aux évènements coopératifs.</li>
+                    <li>Marque employeur modernisée autour du sport.</li>
+                  </ul>
+                </div>
+
+                <div class="project-focus salarie" data-role="salarie">
+                  <h4>POUR LES SALARIÉS</h4>
+                  <ul>
+                    <li>Centralisation des échanges sportifs internes.</li>
+                    <li>Organisation des groupes sportifs facilitée.</li>
+                    <li>Networking interne/externe amélioré.</li>
+                    <li>Pratique sportive en entreprise simplifiée.</li>
+                  </ul>
+                </div>
+              </article>
+
+              <article class="project-side side-right">
+                <div class="project-side-cap"></div>
+                <img src="assets/actifs/visuel-droite-salaries.png" alt="Visuel salariés droite" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+                <div class="project-side-fallback" style="display:none;">Ajoutez : assets/actifs/visuel-droite-salaries.png</div>
+              </article>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -93,7 +143,7 @@
         </div>
       </section>
 
-      <section class="panel dark" id="probleme"><div class="container split fade-in"><div><span class="tag">Problem</span><h3>Pourquoi les équipes se désengagent</h3><p>Hybrid work + manque d'outils = baisse de cohésion et d'énergie collective.</p><div class="text-design">Engagement interne en baisse depuis le passage hybride.</div></div><div class="stack-cards"><article class="card tilt"><b>70%</b><span>des salariés manquent d'engagement</span></article><article class="card tilt"><b>1 sur 2</b><span>ne participe à aucune activité interne</span></article><article class="card tilt"><b>+ friction</b><span>organiser des activités prend trop de temps</span></article></div></div></section>
+      
 
       <section class="panel dark" id="solution">
         <div class="container phone-layout fade-in">
@@ -107,7 +157,30 @@
 
       <section class="panel dark" id="produit"><div class="container laptop-layout fade-in"><div class="laptop-mock tilt"><img class="laptop-image" src="assets/product-showcase.png" alt="Product showcase" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" /><div class="laptop-screen" id="laptopScreen" style="display:none;"></div></div><div><span class="tag">Produit</span><h3>Plateforme SaaS tout-en-un</h3><ul class="spec-list" id="specList"><li class="active">Dashboard RH en temps réel</li><li>Création de matchs en 3 clics</li><li>Classements inter-équipes</li><li>Paiements intégrés</li><li>Pilotage multi-entreprises</li></ul></div></div></section>
 
-      <section class="panel green" id="marche"><div class="container fade-in"><span class="tag">Marché</span><h3>Un marché massif en transformation</h3><div class="kpi-row"><article class="kpi tilt"><b>$58B</b><p>Wellness corporate</p></article><article class="kpi tilt"><b>+9.5%</b><p>Croissance annuelle</p></article><article class="kpi tilt"><b>120M</b><p>Employés ciblés</p></article></div><div class="bars"><span style="--h:25%"></span><span style="--h:45%"></span><span style="--h:65%"></span><span style="--h:82%"></span><span style="--h:100%"></span></div></div><div class="slide-image"><img src="assets/market-image.png" alt="Marché visuel" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" /><div class="placeholder" style="display:none;">Ajoutez un visuel marché</div></div></section>
+      <section class="panel green" id="pourquoi-maintenant">
+        <div class="container fade-in why-now-wrap">
+          <span class="tag">Pourquoi maintenant</span>
+          <h3>Le momentum est unique : bien-être, sport et engagement collaborateur convergent enfin.</h3>
+          <div class="why-now-grid">
+            <article class="why-card tilt"><h4>Budgets en hausse</h4><p>Les entreprises augmentent les enveloppes dédiées au sport et au bien-être pour fidéliser les talents.</p></article>
+            <article class="why-card tilt"><h4>Héritage du Covid</h4><p>La santé mentale et physique est devenue un sujet prioritaire dans les politiques RH.</p></article>
+            <article class="why-card tilt"><h4>Effet JO & nouveaux usages</h4><p>L’engouement sportif accélère la découverte de nouveaux sports, partenaires et formats coopératifs.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel dark" id="marche">
+        <div class="container fade-in market-scope-wrap">
+          <span class="tag">TAM · SAM · SOM</span>
+          <h3>Notre taille de marché et notre positionnement</h3>
+          <div class="market-circles">
+            <div class="circle tam"><strong>TAM</strong><span>Marché global<br/>48 Md€</span></div>
+            <div class="circle sam"><strong>SAM</strong><span>Marché atteignable<br/>11 Md€</span></div>
+            <div class="circle som"><strong>SOM</strong><span>Marché capturable<br/>1,2 Md€</span></div>
+          </div>
+          <p class="market-caption">Les cercles se superposent pour visualiser l’écart entre le potentiel total du marché, la cible adressable et la part que Hub2gether peut réellement capter.</p>
+        </div>
+      </section>
 
       <section class="panel dark" id="business"><div class="container fade-in"><span class="tag">Business Model</span><h3>Un modèle SaaS scalable</h3><div class="plans" id="plans"><article class="plan active tilt" data-plan="Starter 99€/mois"><h4>Starter</h4><p>PME</p></article><article class="plan tilt" data-plan="Growth 249€/mois"><h4>Growth</h4><p>Scale-up</p></article><article class="plan tilt" data-plan="Business 499€/mois"><h4>Business</h4><p>ETI</p></article><article class="plan tilt" data-plan="Enterprise Sur devis"><h4>Enterprise</h4><p>Grand compte</p></article></div><p class="live" id="planLive">Starter 99€/mois</p></div><div class="slide-image"><img src="assets/business-image.png" alt="Business visuel" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" /><div class="placeholder" style="display:none;">Ajoutez un visuel business</div></div></section>
 

@@ -37,6 +37,32 @@ function goToIndex(targetIndex) {
   }, 900);
 }
 
+
+const projectViewport = document.querySelector('#projectStageViewport');
+const projectStageDots = [...document.querySelectorAll('.project-stage-dot')];
+let projectStage = 0;
+
+function setProjectStage(stage) {
+  if (!projectViewport) return;
+  projectStage = Math.max(0, Math.min(2, stage));
+  projectViewport.dataset.stage = String(projectStage);
+  projectStageDots.forEach((dot, i) => dot.classList.toggle('active', i === projectStage));
+}
+
+function handleProjectWheel(direction) {
+  const activePanel = panels[currentIndex];
+  if (!projectViewport || !activePanel || activePanel.id !== 'presentation-projet') return false;
+  const nextStage = projectStage + direction;
+  if (nextStage >= 0 && nextStage <= 2) {
+    setProjectStage(nextStage);
+    return true;
+  }
+  return false;
+}
+
+projectStageDots.forEach((dot, i) => dot.addEventListener('click', () => setProjectStage(i)));
+setProjectStage(0);
+
 function handlePreviewWheel(direction) {
   const activePanel = panels[currentIndex];
   if (!activePanel || activePanel.id !== 'interface-detail' || !prevSlides.length) return false;
@@ -67,7 +93,7 @@ page.addEventListener('wheel', (event) => {
   wheelAccum = 0;
   lastWheelTrigger = now;
 
-  if (handlePreviewWheel(direction)) return;
+  if (handleProjectWheel(direction) || handlePreviewWheel(direction)) return;
   goToIndex(currentIndex + direction);
 }, { passive: false });
 
@@ -136,22 +162,6 @@ document.querySelectorAll('.tilt').forEach((node) => {
 
 
 
-const impactTabs = [...document.querySelectorAll('#impactTabs button')];
-const impactPanels = [...document.querySelectorAll('.impact-panel')];
-impactTabs.forEach((tab) => {
-  tab.addEventListener('click', () => {
-    impactTabs.forEach((t) => t.classList.remove('active'));
-    tab.classList.add('active');
-    const key = tab.dataset.target;
-    impactPanels.forEach((panel) => panel.classList.toggle('active', panel.dataset.panel === key));
-  });
-});
-let impactIndex = 0;
-setInterval(() => {
-  if (!impactTabs.length) return;
-  impactIndex = (impactIndex + 1) % impactTabs.length;
-  impactTabs[impactIndex].click();
-}, 3200);
 
 const prevNavButtons = [...document.querySelectorAll('#prevNav .pni')];
 const prevTrack = document.querySelector('#prevTrack');
