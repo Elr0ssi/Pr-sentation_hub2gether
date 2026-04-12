@@ -225,10 +225,10 @@ if (toggleFullscreenBtn) {
     try {
       if (!document.fullscreenElement) {
         await document.documentElement.requestFullscreen();
-        toggleFullscreenBtn.textContent = '⤢ Quitter plein écran';
+        toggleFullscreenBtn.textContent = '🡼';
       } else {
         await document.exitFullscreen();
-        toggleFullscreenBtn.textContent = '⛶ Plein écran';
+        toggleFullscreenBtn.textContent = '⛶';
       }
     } catch (error) {
       console.warn("Impossible d'activer le plein écran automatiquement.", error);
@@ -236,7 +236,7 @@ if (toggleFullscreenBtn) {
   });
 
   document.addEventListener('fullscreenchange', () => {
-    toggleFullscreenBtn.textContent = document.fullscreenElement ? '⤢ Quitter plein écran' : '⛶ Plein écran';
+    toggleFullscreenBtn.textContent = document.fullscreenElement ? '🡼' : '⛶';
   });
 }
 
