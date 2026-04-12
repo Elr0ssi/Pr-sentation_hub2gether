@@ -217,34 +217,53 @@
           <h3>PRÉVISIONS FINANCIÈRES</h3>
 
           <div class="fd-indicators">
-            <div><b>ARR</b><span>1,4 M€</span></div>
-            <div><b>Marge brute</b><span>68%</span></div>
-            <div><b>Runway</b><span>19 mois</span></div>
-            <div><b>Payback CAC</b><span>7 mois</span></div>
+            <div><b>ARR à 3 ans</b><span>4,8 M€</span></div>
+            <div><b>RN à 3 ans</b><span>1,1 M€</span></div>
+            <div><b>Cash-flow à 3 ans</b><span>1,4 M€</span></div>
+            <div><b>Perspective CA</b><span>+20% / an</span></div>
           </div>
 
           <div class="fd-main">
             <article class="fd-curve">
-              <h4>Courbe de croissance (faux montants)</h4>
-              <svg viewBox="0 0 1000 340" class="fd-curve-svg">
-                <polyline points="20,300 170,278 320,252 480,205 640,158 820,95 980,48" />
-              </svg>
-              <div class="fd-legend">
-                <span>Y1: 0,3 M€</span><span>Y2: 0,9 M€</span><span>Y3: 2,1 M€</span><span>Y4: 3,8 M€</span><span>Y5: 6,0 M€</span>
+              <h4>Projection de croissance (faux montants)</h4>
+              <div class="fd-chart-wrap">
+                <svg viewBox="0 0 1000 360" class="fd-curve-svg" aria-label="Courbe de croissance avec axes">
+                  <line class="axis" x1="70" y1="20" x2="70" y2="300" />
+                  <line class="axis" x1="70" y1="300" x2="960" y2="300" />
+                  <g class="grid-lines">
+                    <line x1="70" y1="250" x2="960" y2="250" />
+                    <line x1="70" y1="200" x2="960" y2="200" />
+                    <line x1="70" y1="150" x2="960" y2="150" />
+                    <line x1="70" y1="100" x2="960" y2="100" />
+                    <line x1="70" y1="50" x2="960" y2="50" />
+                  </g>
+                  <g class="bars">
+                    <rect x="115" y="190" width="70" height="110" />
+                    <rect x="235" y="165" width="70" height="135" />
+                    <rect x="355" y="145" width="70" height="155" />
+                    <rect x="475" y="120" width="70" height="180" />
+                    <rect x="595" y="90" width="70" height="210" />
+                    <rect x="715" y="70" width="70" height="230" />
+                    <rect x="835" y="55" width="70" height="245" />
+                  </g>
+                  <polyline class="growth-line" points="115,210 235,230 355,140 475,165 595,110 715,60 835,175 960,125" />
+                </svg>
+                <div class="fd-y-axis"><span>5000</span><span>4000</span><span>3000</span><span>2000</span><span>1000</span></div>
+                <div class="fd-x-axis"><span>Y1</span><span>Y2</span><span>Y3</span><span>Y4</span><span>Y5</span><span>Y6</span><span>Y7</span></div>
               </div>
             </article>
             <aside class="fd-side">
               <article class="fd-box">
-                <h5>Info 01</h5>
-                <p>Croissance moyenne annuelle projetée : <b>+56%</b>.</p>
+                <h5>Croissance</h5>
+                <p>Trajectoire moyenne projetée du CA: <b>+20%/an</b>.</p>
               </article>
               <article class="fd-box">
-                <h5>Info 02</h5>
-                <p>Point mort estimé au <b>T3 année 3</b>.</p>
+                <h5>Rentabilité</h5>
+                <p>Seuil de rentabilité attendu au <b>T3 de l’année 3</b>.</p>
               </article>
               <article class="fd-box highlight">
-                <h5>Info catchy</h5>
-                <p>Objectif : passer de 25 à 180 entreprises clientes en 24 mois.</p>
+                <h5>Objectif 24 mois</h5>
+                <p>Passer de 25 à 180 entreprises clientes, avec une expansion multi-secteurs.</p>
               </article>
             </aside>
           </div>
