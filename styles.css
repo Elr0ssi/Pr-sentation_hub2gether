@@ -161,6 +161,11 @@ p{color:var(--muted)} .tag{display:inline-flex;margin-bottom:12px;border:1px sol
 .market-circles .tam{width:340px;height:340px;background:rgba(110,228,255,.1);left:20%;top:28px}
 .market-circles .sam{width:240px;height:240px;background:rgba(247,198,90,.15);left:46%;top:102px}
 .market-circles .som{width:160px;height:160px;background:rgba(125,211,173,.22);left:63%;top:158px}
+.market-circles .circle{transform:scale(.78);opacity:.2}
+.market-scope-wrap.visible .market-circles .tam{animation:marketPop .55s cubic-bezier(.22,1,.36,1) forwards}
+.market-scope-wrap.visible .market-circles .sam{animation:marketPop .55s cubic-bezier(.22,1,.36,1) .2s forwards}
+.market-scope-wrap.visible .market-circles .som{animation:marketPop .55s cubic-bezier(.22,1,.36,1) .4s forwards}
+@keyframes marketPop{0%{transform:scale(.78);opacity:.2}65%{transform:scale(1.06);opacity:1}100%{transform:scale(1);opacity:1}}
 
 @media (max-width:980px){
   .project-title-main{font-size:2rem}
