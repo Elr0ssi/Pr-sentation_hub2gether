@@ -164,15 +164,18 @@ const plans = [...document.querySelectorAll('#plans .plan')];
 const planLive = document.querySelector('#planLive');
 let planIndex = 0;
 function setPlan(index) {
+  if (!plans.length || !planLive) return;
   planIndex = index;
   plans.forEach((plan, i) => plan.classList.toggle('active', i === index));
   planLive.textContent = plans[index].dataset.plan;
 }
-plans.forEach((plan, i) => plan.addEventListener('mouseenter', () => setPlan(i)));
-setInterval(() => {
-  if (window.innerWidth <= 980) return;
-  setPlan((planIndex + 1) % plans.length);
-}, 2600);
+if (plans.length && planLive) {
+  plans.forEach((plan, i) => plan.addEventListener('mouseenter', () => setPlan(i)));
+  setInterval(() => {
+    if (window.innerWidth <= 980) return;
+    setPlan((planIndex + 1) % plans.length);
+  }, 2600);
+}
 
 document.querySelectorAll('.tilt').forEach((node) => {
   node.addEventListener('mousemove', (event) => {
