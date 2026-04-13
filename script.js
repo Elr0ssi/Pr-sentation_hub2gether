@@ -112,7 +112,11 @@ page.addEventListener('wheel', (event) => {
 
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
-    if (entry.isIntersecting) entry.target.classList.add('visible');
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    } else {
+      entry.target.classList.remove('visible');
+    }
   });
 }, { threshold: 0.22 });
 document.querySelectorAll('.fade-in').forEach((node) => revealObserver.observe(node));
@@ -133,9 +137,18 @@ function animateCount(el) {
 
 const countObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
-    if (!entry.isIntersecting || entry.target.dataset.done) return;
-    entry.target.dataset.done = '1';
-    animateCount(entry.target);
+    if (entry.isIntersecting) {
+      if (entry.target.dataset.animating) return;
+      entry.target.dataset.animating = '1';
+      entry.target.textContent = '0';
+      animateCount(entry.target);
+      setTimeout(() => {
+        entry.target.dataset.animating = '';
+      }, 1200);
+    } else {
+      entry.target.textContent = '0';
+      entry.target.dataset.animating = '';
+    }
   });
 }, { threshold: 0.5 });
 document.querySelectorAll('[data-count]').forEach((node) => countObserver.observe(node));

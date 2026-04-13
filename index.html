@@ -266,28 +266,25 @@
               <h4>Projection de croissance (faux montants)</h4>
               <div class="fd-chart-wrap">
                 <svg viewBox="0 0 1000 360" class="fd-curve-svg" aria-label="Courbe de croissance avec axes">
+                  <defs>
+                    <linearGradient id="areaGlow" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#b071ff" stop-opacity="0.35" />
+                      <stop offset="100%" stop-color="#b071ff" stop-opacity="0.04" />
+                    </linearGradient>
+                  </defs>
                   <line class="axis" x1="70" y1="20" x2="70" y2="300" />
                   <line class="axis" x1="70" y1="300" x2="960" y2="300" />
                   <g class="grid-lines">
-                    <line x1="70" y1="250" x2="960" y2="250" />
-                    <line x1="70" y1="200" x2="960" y2="200" />
-                    <line x1="70" y1="150" x2="960" y2="150" />
-                    <line x1="70" y1="100" x2="960" y2="100" />
-                    <line x1="70" y1="50" x2="960" y2="50" />
+                    <line x1="70" y1="244" x2="960" y2="244" />
+                    <line x1="70" y1="188" x2="960" y2="188" />
+                    <line x1="70" y1="132" x2="960" y2="132" />
+                    <line x1="70" y1="76" x2="960" y2="76" />
                   </g>
-                  <g class="bars">
-                    <rect x="115" y="190" width="70" height="110" />
-                    <rect x="235" y="165" width="70" height="135" />
-                    <rect x="355" y="145" width="70" height="155" />
-                    <rect x="475" y="120" width="70" height="180" />
-                    <rect x="595" y="90" width="70" height="210" />
-                    <rect x="715" y="70" width="70" height="230" />
-                    <rect x="835" y="55" width="70" height="245" />
-                  </g>
-                  <polyline class="growth-line" points="115,210 235,230 355,140 475,165 595,110 715,60 835,175 960,125" />
+                  <path class="growth-area" d="M115 294 C 190 285, 280 272, 300 250 C 370 216, 470 166, 520 130 C 600 94, 680 70, 740 62 C 820 110, 900 160, 960 132 L960 300 L115 300 Z" />
+                  <path class="growth-line" d="M115 294 C 190 285, 280 272, 300 250 C 370 216, 470 166, 520 130 C 600 94, 680 70, 740 62 C 820 110, 900 160, 960 132" />
                 </svg>
-                <div class="fd-y-axis"><span>5000</span><span>4000</span><span>3000</span><span>2000</span><span>1000</span></div>
-                <div class="fd-x-axis"><span>Y1</span><span>Y2</span><span>Y3</span><span>Y4</span><span>Y5</span><span>Y6</span><span>Y7</span></div>
+                <div class="fd-y-axis"><span>500k€</span><span>400k€</span><span>300k€</span><span>200k€</span><span>100k€</span></div>
+                <div class="fd-x-axis"><span>Y1<small>9 675€</small></span><span>Y2<small>30 433€</small></span><span>Y3<small>81 924€</small></span><span>Y4<small>202 995€</small></span><span>Y5<small>461 402€</small></span></div>
               </div>
             </article>
             <aside class="fd-side">

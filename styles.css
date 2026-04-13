@@ -204,19 +204,14 @@ p{color:var(--muted)} .tag{display:inline-flex;margin-bottom:12px;border:1px sol
 .fd-curve-svg{width:100%;height:100%;min-height:310px}
 .fd-curve-svg .axis{stroke:rgba(196,223,255,.6);stroke-width:2}
 .fd-curve-svg .grid-lines line{stroke:rgba(185,216,255,.2);stroke-width:1}
-.fd-curve-svg .bars rect{fill:rgba(145,188,255,.45);opacity:.55;transform-origin:bottom;animation:barsIn 1s ease both;animation-play-state:paused}
+.fd-curve-svg .growth-area{fill:url(#areaGlow);opacity:0;transform-origin:bottom;transform:scaleY(.2)}
 .fd-curve-svg .growth-line{fill:none;stroke:#c06bff;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 10px rgba(192,107,255,.75));stroke-dasharray:1800;stroke-dashoffset:1800;opacity:0}
 .finance-duplicate.visible .fd-curve-svg .growth-line{animation:drawGrowth 2.2s ease forwards;opacity:1}
-.finance-duplicate.visible .fd-curve-svg .bars rect{animation-play-state:running}
-.finance-duplicate.visible .fd-curve-svg .bars rect:nth-child(1){animation-delay:.05s}
-.finance-duplicate.visible .fd-curve-svg .bars rect:nth-child(2){animation-delay:.1s}
-.finance-duplicate.visible .fd-curve-svg .bars rect:nth-child(3){animation-delay:.15s}
-.finance-duplicate.visible .fd-curve-svg .bars rect:nth-child(4){animation-delay:.2s}
-.finance-duplicate.visible .fd-curve-svg .bars rect:nth-child(5){animation-delay:.25s}
-.finance-duplicate.visible .fd-curve-svg .bars rect:nth-child(6){animation-delay:.3s}
-.finance-duplicate.visible .fd-curve-svg .bars rect:nth-child(7){animation-delay:.35s}
+.finance-duplicate.visible .fd-curve-svg .growth-area{animation:areaReveal 1.6s cubic-bezier(0.22,1,0.36,1) forwards;opacity:1}
 .fd-y-axis{position:absolute;left:4px;top:24px;bottom:58px;display:grid;align-content:space-between;color:#b7d8ff;font-size:.78rem}
-.fd-x-axis{position:absolute;left:74px;right:26px;bottom:8px;display:grid;grid-template-columns:repeat(7,1fr);color:#c7e4ff;font-size:.8rem}
+.fd-x-axis{position:absolute;left:84px;right:36px;bottom:8px;display:grid;grid-template-columns:repeat(5,1fr);gap:10px;color:#c7e4ff;font-size:.78rem}
+.fd-x-axis span{display:grid;gap:2px}
+.fd-x-axis small{font-size:.68rem;color:rgba(199,228,255,.72)}
 .fd-side{display:grid;gap:10px}
 .fd-box{border-radius:18px;padding:18px;background:linear-gradient(180deg,rgba(21,58,90,.88),rgba(17,49,80,.84));border:1px solid rgba(143,202,255,.24);display:grid;gap:8px}
 .fd-box h5{font-size:1.25rem;color:#d7efff;margin:0}
@@ -224,7 +219,7 @@ p{color:var(--muted)} .tag{display:inline-flex;margin-bottom:12px;border:1px sol
 .fd-box.highlight{background:linear-gradient(145deg,#7dd3ad,#8ae7bf);color:#08281f}
 .fd-box.highlight h5,.fd-box.highlight p{color:#08281f}
 @keyframes drawGrowth{to{stroke-dashoffset:0}}
-@keyframes barsIn{from{transform:scaleY(.02);opacity:.2}to{transform:scaleY(1);opacity:.55}}
+@keyframes areaReveal{from{transform:scaleY(.2);opacity:.1}to{transform:scaleY(1);opacity:1}}
 
 
 .painpoint-premium{max-width:1200px;padding:36px 0;display:grid;gap:20px;font-family:Inter,Outfit,sans-serif;align-content:center}
