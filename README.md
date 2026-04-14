@@ -1,28 +1,81 @@
-# Hub2gether Pitch Deck — Guide des images (`assets/`)
+# Hub2gether Pitch Deck — fichiers image à préparer
 
-Déposez **tous vos PNG/JPG** dans le dossier `assets/` à la racine du projet.
+Ce README liste **exactement** les PNG utilisés dans le développement actuel (`index.html`), section par section.
 
-## Emplacements à préparer
+---
 
-| Section | Fichier attendu | Où c'est utilisé |
+## 1) Logos principaux
+
+| Section | Fichier | Statut |
 |---|---|---|
-| Logo header/hero | `assets/logo-hub2gether.png` | Logo navbar + hero |
-| Problème illustration | `assets/problem-illustration.png` | Section Problème (bloc visuel) |
-| Interface dashboard | `assets/entreprise-rh.png` | Carousel Interface slide 01 |
-| Interface tournois | `assets/entreprise-tournois.png` | Carousel Interface slide 02 |
-| Interface paiements | `assets/entreprise-paiements.png` | Carousel Interface slide 03 |
-| Interface partenaires | `assets/entreprise-partenaires.png` | Carousel Interface slide 04 |
-| Interface capture custom | `assets/entreprise-custom.png` | Carousel Interface slide 05 |
-| Solution visuel | `assets/solution-3d.png` | Section Solution |
-| Produit visuel | `assets/product-showcase.png` | Section Produit |
-| Marché visuel | `assets/market-image.png` | Section Marché |
-| Business visuel | `assets/business-image.png` | Section Business |
-| Concurrence visuel | `assets/concurrents-map.png` | Section Concurrence |
+| Logo menu (topbar) | `assets/actifs/logo-menu.png` | utilisé en priorité |
+| Fallback logo menu | `assets/logo-hub2gether.png` | utilisé si le logo menu manque |
 
-## Conseils format
+---
 
-- Format conseillé: PNG (ou JPG optimisé).
-- Ratio recommandé pour les visuels principaux: **16:9** ou proche.
-- Taille recommandée: entre **1600px et 2400px de large**.
+## 2) Slide Problème
 
-Si un fichier n'existe pas, un placeholder s'affiche automatiquement dans la section concernée.
+| Section | Fichier |
+|---|---|
+| Visuel problème | `assets/problem-visual.png` |
+
+---
+
+## 3) Slide Solution néon (avant Entreprise/Salarié)
+
+| Section | Fichier |
+|---|---|
+| Visuel central solution | `assets/solution-neon-center.png` |
+
+---
+
+## 4) Slide Présentation Entreprise / Salarié
+
+| Section | Fichier |
+|---|---|
+| Visuel bas entreprise | `assets/actifs/visuel-bas-entreprise.png` |
+| Visuel bas salarié | `assets/actifs/visuel-bas-salarie.png` |
+
+---
+
+## 5) Slide Interface (carousel)
+
+| Slide | Fichier |
+|---|---|
+| Dashboard RH | `assets/entreprise-rh.png` |
+| Tournois | `assets/entreprise-tournois.png` |
+| Paiements | `assets/entreprise-paiements.png` |
+| Partenaires | `assets/entreprise-partenaires.png` |
+| Capture custom | `assets/entreprise-custom.png` |
+
+---
+
+## 6) Slide “Le moment idéal” (4 rectangles)
+
+> Icônes PNG à mettre dans les rectangles (numéro + logo).
+
+| Rectangle | Fichier |
+|---|---|
+| 1 | `assets/solution-icon-1.png` |
+| 2 | `assets/solution-icon-2.png` |
+| 3 | `assets/solution-icon-3.png` |
+| 4 (législatif) | `assets/solution-icon-4.png` |
+
+---
+
+## Recommandations format
+
+- Format conseillé : **PNG** (fond transparent si icône).
+- Pour les visuels larges (slides) : largeur 1600px+.
+- Pour les icônes des rectangles : carré (ex. 256x256 ou 512x512).
+
+---
+
+## Vérification rapide
+
+Vous pouvez contrôler les chemins attendus avec :
+
+```bash
+rg -n 'src="assets' index.html
+```
+
