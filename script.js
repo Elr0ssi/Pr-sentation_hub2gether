@@ -1,6 +1,7 @@
 const page = document.querySelector('#page');
 const panels = [...document.querySelectorAll('.panel')];
 const progressBar = document.querySelector('#progressBar');
+const menuLinks = [...document.querySelectorAll('.menu a[href^="#"]')];
 let isAnimating = false;
 let currentIndex = 0;
 let wheelAccum = 0;
@@ -24,6 +25,15 @@ function detectCurrentIndex() {
     }
   });
   currentIndex = idx;
+  updateActiveMenuLink();
+}
+
+function updateActiveMenuLink() {
+  const activeId = panels[currentIndex]?.id;
+  menuLinks.forEach((link) => {
+    const isActive = link.getAttribute('href') === `#${activeId}`;
+    link.classList.toggle('active', isActive);
+  });
 }
 
 let goToFrame;
