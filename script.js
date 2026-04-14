@@ -155,10 +155,12 @@ document.querySelectorAll('[data-count]').forEach((node) => countObserver.observ
 
 const specItems = [...document.querySelectorAll('#specList li')];
 let specIndex = 0;
-setInterval(() => {
-  specItems.forEach((item, idx) => item.classList.toggle('active', idx === specIndex));
-  specIndex = (specIndex + 1) % specItems.length;
-}, 1800);
+if (specItems.length) {
+  setInterval(() => {
+    specItems.forEach((item, idx) => item.classList.toggle('active', idx === specIndex));
+    specIndex = (specIndex + 1) % specItems.length;
+  }, 1800);
+}
 
 const plans = [...document.querySelectorAll('#plans .plan')];
 const planLive = document.querySelector('#planLive');
