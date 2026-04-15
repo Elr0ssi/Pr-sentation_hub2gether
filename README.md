@@ -63,6 +63,17 @@ Ce README liste **exactement** les PNG utilisés dans le développement actuel (
 
 ---
 
+## 7) Slide Équipe
+
+| Membre | Fichier |
+|---|---|
+| Raphael Rossi | `assets/team-raphael-rossi.png` |
+| Arthur Rialland | `assets/team-arthur-rialland.png` |
+| Martin Feuilledet | `assets/team-martin-feuilledet.png` |
+| Malo Menard | `assets/team-malo-menard.png` |
+
+---
+
 ## Recommandations format
 
 - Format conseillé : **PNG** (fond transparent si icône).
@@ -78,4 +89,3 @@ Vous pouvez contrôler les chemins attendus avec :
 ```bash
 rg -n 'src="assets' index.html
 ```
-
