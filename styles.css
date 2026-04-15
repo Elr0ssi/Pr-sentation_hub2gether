@@ -85,7 +85,7 @@ p{color:var(--muted)} .tag{display:inline-flex;margin-bottom:12px;color:#7ea79a;
 .solution-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;width:min(980px,100%);justify-self:center}
 .solution-card{border-radius:18px;padding:18px;display:grid;grid-template-columns:76px 1fr;gap:16px;align-items:center;min-height:196px}
 .solution-aside{display:grid;gap:10px;justify-items:start}
-.solution-aside i{width:44px;height:44px;border-radius:12px;background:linear-gradient(145deg,var(--yellow),var(--pink));display:grid;place-items:center;color:#111;font-style:normal;font-weight:800;font-size:1.1rem}
+.solution-aside i{width:44px;height:44px;border-radius:12px;background:linear-gradient(145deg,#9ef4cf 0%,#63d5a7 48%,#2e7f63 100%);display:grid;place-items:center;color:#073224;font-style:normal;font-weight:800;font-size:1.1rem;box-shadow:0 6px 14px rgba(46,127,99,.28)}
 .solution-aside img{width:52px;height:52px;object-fit:contain;display:block}
 .solution-icon-fallback{width:52px;height:52px;border-radius:10px;border:1px dashed rgba(255,255,255,.35);display:grid;place-items:center;font-size:.62rem;color:#dfe6ff}
 .solution-card h4{color:var(--yellow);font-size:1.12rem}
@@ -124,8 +124,8 @@ p{color:var(--muted)} .tag{display:inline-flex;margin-bottom:12px;color:#7ea79a;
 .bm-icon{font-size:1.6rem}
 .bm-card h4{font-size:1.7rem;color:#eef3ff}
 .bm-card p{font-size:.95rem;color:#ccd8ea;line-height:1.35}
-.bm-card.highlight{background:linear-gradient(145deg,#3e56ea,#4e66ff);border-color:#5e74ff;place-items:center;text-align:center;align-content:center}
-.bm-card.highlight p{color:#f4f7ff}
+.bm-card.highlight{background:linear-gradient(145deg,#98f0ca 0%,#63d9a8 50%,#2f8c6c 100%);border-color:#70dbaf;place-items:center;text-align:center;align-content:center}
+.bm-card.highlight p{color:#0a2f23}
 .bm-big{font-size:4rem;font-family:'Space Grotesk',sans-serif;font-weight:800;line-height:1}
 .bm-grid .bm-card{opacity:0;transform:translateY(28px) scale(.96)}
 .bm-wrap.visible .bm-grid .bm-card:nth-child(1){animation:bmCardIn .62s cubic-bezier(.22,1,.36,1) forwards}
