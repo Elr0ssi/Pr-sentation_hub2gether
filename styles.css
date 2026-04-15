@@ -41,7 +41,8 @@
 .panel .container .tag{margin-bottom:2px}
 .panel .container > h3{margin-top:0}
 
-h1,h2,h3,h4,p{margin:0} h2,h3,h4{font-family:'Space Grotesk',sans-serif} h2{font-size:clamp(1.8rem,4vw,3rem);text-align:center;max-width:900px} h3{font-size:clamp(1.8rem,4vw,3rem);max-width:880px}
+h1,h2,h3,h4,p{margin:0} h2,h3,h4{font-family:Outfit,sans-serif} h2{font-size:clamp(1.8rem,4vw,3rem);text-align:center;max-width:900px} h3{font-size:clamp(1.8rem,4vw,3rem);max-width:880px}
+h1,h2,h3,h4,.hero-title,.project-title-main,.neon-logo,.team-meta b,.bm-card h4,.menu a,.tag{font-family:Outfit,sans-serif!important}
 p{color:var(--muted)} .tag{display:inline-flex;margin-bottom:12px;border:1px solid rgba(247,198,90,.4);color:var(--yellow);border-radius:999px;padding:6px 12px;font-size:.78rem;letter-spacing:.09em;text-transform:uppercase}
 
 .hero{background:
