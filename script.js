@@ -2,6 +2,10 @@ const page = document.querySelector('#page');
 const panels = [...document.querySelectorAll('.panel')];
 const progressBar = document.querySelector('#progressBar');
 const menuLinks = [...document.querySelectorAll('.menu a[href^="#"]')];
+const panelIndexById = new Map(panels.map((panel, index) => [panel.id, index]));
+const menuTargets = menuLinks
+  .map((link) => ({ link, id: link.getAttribute('href')?.slice(1) || '' }))
+  .filter((item) => panelIndexById.has(item.id));
 let isAnimating = false;
 let currentIndex = 0;
 let wheelAccum = 0;
@@ -30,11 +34,25 @@ function detectCurrentIndex() {
 
 function updateActiveMenuLink() {
   const activeId = panels[currentIndex]?.id;
-  menuLinks.forEach((link) => {
-    const isActive = link.getAttribute('href') === `#${activeId}`;
-    link.classList.toggle('active', isActive);
+  let activeMenuIndex = 0;
+  menuTargets.forEach((item, index) => {
+    const isActive = item.id === activeId;
+    item.link.classList.toggle('active', isActive);
+    if (isActive) activeMenuIndex = index;
   });
+  if (progressBar && menuTargets.length > 1) {
+    progressBar.style.width = `${(activeMenuIndex / (menuTargets.length - 1)) * 100}%`;
+  }
 }
+
+menuTargets.forEach((item) => {
+  item.link.addEventListener('click', (event) => {
+    const panelIndex = panelIndexById.get(item.id);
+    if (panelIndex === undefined) return;
+    event.preventDefault();
+    goToIndex(panelIndex);
+  });
+});
 
 let goToFrame;
 function goToIndex(targetIndex) {
@@ -252,8 +270,6 @@ if (openPrototypeBtn && closePrototypeBtn && prototypeOverlay) {
 }
 
 page.addEventListener('scroll', () => {
-  const max = page.scrollHeight - page.clientHeight;
-  progressBar.style.width = `${max <= 0 ? 0 : (page.scrollTop / max) * 100}%`;
   if (!isAnimating) detectCurrentIndex();
 });
 
