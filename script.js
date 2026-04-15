@@ -1,6 +1,11 @@
 const page = document.querySelector('#page');
 const panels = [...document.querySelectorAll('.panel')];
 const progressBar = document.querySelector('#progressBar');
+const menuLinks = [...document.querySelectorAll('.menu a[href^="#"]')];
+const panelIndexById = new Map(panels.map((panel, index) => [panel.id, index]));
+const menuTargets = menuLinks
+  .map((link) => ({ link, id: link.getAttribute('href')?.slice(1) || '' }))
+  .filter((item) => panelIndexById.has(item.id));
 let isAnimating = false;
 let currentIndex = 0;
 let wheelAccum = 0;
@@ -24,7 +29,50 @@ function detectCurrentIndex() {
     }
   });
   currentIndex = idx;
+  updateActiveMenuLink();
 }
+
+function updateActiveMenuLink() {
+  const viewportCenter = page.scrollTop + page.clientHeight / 2;
+  let bestIndex = 0;
+  let bestFocus = -1;
+
+  menuTargets.forEach((item, index) => {
+    const panelIndex = panelIndexById.get(item.id);
+    if (panelIndex === undefined) return;
+    const panel = panels[panelIndex];
+    const panelCenter = panel.offsetTop + panel.offsetHeight / 2;
+    const dist = Math.abs(panelCenter - viewportCenter);
+    const focus = Math.max(0, 1 - dist / (page.clientHeight * 0.95));
+    item.link.style.setProperty('--focus', focus.toFixed(3));
+    if (focus > bestFocus) {
+      bestFocus = focus;
+      bestIndex = index;
+    }
+  });
+
+  menuTargets.forEach((item, index) => {
+    item.link.classList.toggle('active', index === bestIndex);
+  });
+
+  if (progressBar && menuTargets.length > 1) {
+    const firstPanel = panels[panelIndexById.get(menuTargets[0].id)];
+    const lastPanel = panels[panelIndexById.get(menuTargets[menuTargets.length - 1].id)];
+    const start = firstPanel?.offsetTop || 0;
+    const end = lastPanel?.offsetTop || 1;
+    const ratio = Math.max(0, Math.min(1, (page.scrollTop - start) / Math.max(1, end - start)));
+    progressBar.style.width = `${ratio * 100}%`;
+  }
+}
+
+menuTargets.forEach((item) => {
+  item.link.addEventListener('click', (event) => {
+    const panelIndex = panelIndexById.get(item.id);
+    if (panelIndex === undefined) return;
+    event.preventDefault();
+    goToIndex(panelIndex);
+  });
+});
 
 let goToFrame;
 function goToIndex(targetIndex) {
@@ -155,24 +203,29 @@ document.querySelectorAll('[data-count]').forEach((node) => countObserver.observ
 
 const specItems = [...document.querySelectorAll('#specList li')];
 let specIndex = 0;
-setInterval(() => {
-  specItems.forEach((item, idx) => item.classList.toggle('active', idx === specIndex));
-  specIndex = (specIndex + 1) % specItems.length;
-}, 1800);
+if (specItems.length) {
+  setInterval(() => {
+    specItems.forEach((item, idx) => item.classList.toggle('active', idx === specIndex));
+    specIndex = (specIndex + 1) % specItems.length;
+  }, 1800);
+}
 
 const plans = [...document.querySelectorAll('#plans .plan')];
 const planLive = document.querySelector('#planLive');
 let planIndex = 0;
 function setPlan(index) {
+  if (!plans.length || !planLive) return;
   planIndex = index;
   plans.forEach((plan, i) => plan.classList.toggle('active', i === index));
   planLive.textContent = plans[index].dataset.plan;
 }
-plans.forEach((plan, i) => plan.addEventListener('mouseenter', () => setPlan(i)));
-setInterval(() => {
-  if (window.innerWidth <= 980) return;
-  setPlan((planIndex + 1) % plans.length);
-}, 2600);
+if (plans.length && planLive) {
+  plans.forEach((plan, i) => plan.addEventListener('mouseenter', () => setPlan(i)));
+  setInterval(() => {
+    if (window.innerWidth <= 980) return;
+    setPlan((planIndex + 1) % plans.length);
+  }, 2600);
+}
 
 document.querySelectorAll('.tilt').forEach((node) => {
   node.addEventListener('mousemove', (event) => {
@@ -237,9 +290,7 @@ if (openPrototypeBtn && closePrototypeBtn && prototypeOverlay) {
 }
 
 page.addEventListener('scroll', () => {
-  const max = page.scrollHeight - page.clientHeight;
-  progressBar.style.width = `${max <= 0 ? 0 : (page.scrollTop / max) * 100}%`;
-  if (!isAnimating) detectCurrentIndex();
+  detectCurrentIndex();
 });
 
 detectCurrentIndex();
