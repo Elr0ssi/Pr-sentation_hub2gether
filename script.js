@@ -33,15 +33,35 @@ function detectCurrentIndex() {
 }
 
 function updateActiveMenuLink() {
-  const activeId = panels[currentIndex]?.id;
-  let activeMenuIndex = 0;
+  const viewportCenter = page.scrollTop + page.clientHeight / 2;
+  let bestIndex = 0;
+  let bestFocus = -1;
+
   menuTargets.forEach((item, index) => {
-    const isActive = item.id === activeId;
-    item.link.classList.toggle('active', isActive);
-    if (isActive) activeMenuIndex = index;
+    const panelIndex = panelIndexById.get(item.id);
+    if (panelIndex === undefined) return;
+    const panel = panels[panelIndex];
+    const panelCenter = panel.offsetTop + panel.offsetHeight / 2;
+    const dist = Math.abs(panelCenter - viewportCenter);
+    const focus = Math.max(0, 1 - dist / (page.clientHeight * 0.95));
+    item.link.style.setProperty('--focus', focus.toFixed(3));
+    if (focus > bestFocus) {
+      bestFocus = focus;
+      bestIndex = index;
+    }
   });
+
+  menuTargets.forEach((item, index) => {
+    item.link.classList.toggle('active', index === bestIndex);
+  });
+
   if (progressBar && menuTargets.length > 1) {
-    progressBar.style.width = `${(activeMenuIndex / (menuTargets.length - 1)) * 100}%`;
+    const firstPanel = panels[panelIndexById.get(menuTargets[0].id)];
+    const lastPanel = panels[panelIndexById.get(menuTargets[menuTargets.length - 1].id)];
+    const start = firstPanel?.offsetTop || 0;
+    const end = lastPanel?.offsetTop || 1;
+    const ratio = Math.max(0, Math.min(1, (page.scrollTop - start) / Math.max(1, end - start)));
+    progressBar.style.width = `${ratio * 100}%`;
   }
 }
 
@@ -270,7 +290,7 @@ if (openPrototypeBtn && closePrototypeBtn && prototypeOverlay) {
 }
 
 page.addEventListener('scroll', () => {
-  if (!isAnimating) detectCurrentIndex();
+  detectCurrentIndex();
 });
 
 detectCurrentIndex();
