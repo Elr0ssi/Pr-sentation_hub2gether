@@ -212,6 +212,7 @@ p{color:var(--muted)} .tag{display:inline-flex;margin-bottom:12px;color:#7ea79a;
 .project-title-main{font-size:clamp(1.9rem,3.8vw,3.2rem);letter-spacing:.01em;margin-bottom:8px}
 .project-subline{font-size:1rem;color:#cde4da;max-width:900px;margin-bottom:8px}
 .project-subline span{color:var(--yellow);font-weight:700}
+.title-accent{color:#7de0b5}
 .project-scroll{margin-top:18px;display:grid;gap:12px}
 .project-stage-head{display:flex;gap:10px}
 .project-stage-dot{border-radius:999px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);color:#d8efdf;font-weight:700;cursor:pointer;padding:10px 16px}
@@ -243,19 +244,21 @@ p{color:var(--muted)} .tag{display:inline-flex;margin-bottom:12px;color:#7ea79a;
 .why-card p{color:#335047}
 .market-scope-wrap{display:grid;gap:14px}
 .market-scope-wrap h3{font-size:clamp(1.4rem,2.6vw,2.1rem);max-width:920px}
-.market-circles{position:relative;min-height:430px;display:grid;place-items:center}
-.market-circles .circle{position:absolute;border-radius:50%;display:grid;place-items:center;text-align:center;border:1px solid rgba(255,255,255,.12);font-weight:600;backdrop-filter:blur(2px);padding:24px;box-shadow:0 10px 24px rgba(0,0,0,.2)}
-.market-circles .circle strong{font-family:'Space Grotesk',sans-serif;font-size:1.08rem;letter-spacing:.04em;color:#ebf3f7}
-.market-circles .circle span{font-size:.8rem;line-height:1.3;color:rgba(232,242,247,.9)}
-.market-circles .circle span b{display:block;margin-top:6px;font-size:clamp(1.25rem,2.5vw,2rem);color:#fff}
-.market-circles .tam{width:340px;height:340px;background:rgba(110,228,255,.1);left:20%;top:28px}
-.market-circles .sam{width:240px;height:240px;background:rgba(247,198,90,.15);left:46%;top:102px}
-.market-circles .som{width:160px;height:160px;background:rgba(125,211,173,.22);left:63%;top:158px}
-.market-circles .circle{transform:scale(.08);opacity:0;transform-origin:center center}
-.market-scope-wrap.visible .market-circles .tam{animation:marketPop .9s cubic-bezier(.2,.8,.2,1) forwards}
-.market-scope-wrap.visible .market-circles .sam{animation:marketPop .9s cubic-bezier(.2,.8,.2,1) .9s forwards}
-.market-scope-wrap.visible .market-circles .som{animation:marketPop .9s cubic-bezier(.2,.8,.2,1) 1.8s forwards}
-@keyframes marketPop{0%{transform:scale(.08);opacity:0}100%{transform:scale(1);opacity:1}}
+.market-stack{display:grid;gap:10px;max-width:1250px}
+.market-tier{position:relative;border-radius:20px;padding:20px 28px;display:grid;gap:8px;border:1px solid rgba(125,211,173,.22)}
+.market-tier p{font-size:1.35rem;letter-spacing:.01em;color:#88e8c0}
+.market-tier b{font-size:5rem;line-height:.95;font-family:Outfit,sans-serif;color:#7de0b5}
+.market-tier small{font-size:1.05rem;color:#ebf7f1}
+.market-tier::after{content:'';position:absolute;left:50%;bottom:-1px;transform:translateX(-50%);width:220px;height:28px;background:inherit;clip-path:polygon(50% 100%,0 0,100% 0)}
+.market-tier.tam{background:linear-gradient(145deg,#2a654f,#255a46);margin-right:70px}
+.market-tier.sam{background:linear-gradient(145deg,#438369,#3b775f);margin-left:70px}
+.market-tier.som{background:linear-gradient(145deg,#86ddb7,#78d1aa);margin-right:70px}
+.market-tier.som p,.market-tier.som b,.market-tier.som small{color:#0e2f26}
+.market-tier{opacity:0;transform:translateY(20px)}
+.market-scope-wrap.visible .market-tier:nth-child(1){animation:marketTierIn .65s cubic-bezier(.22,1,.36,1) forwards}
+.market-scope-wrap.visible .market-tier:nth-child(2){animation:marketTierIn .65s cubic-bezier(.22,1,.36,1) .2s forwards}
+.market-scope-wrap.visible .market-tier:nth-child(3){animation:marketTierIn .65s cubic-bezier(.22,1,.36,1) .4s forwards}
+@keyframes marketTierIn{to{opacity:1;transform:translateY(0)}}
 
 @media (max-width:980px){
   .panel{padding:104px 16px 42px}
@@ -276,10 +279,12 @@ p{color:var(--muted)} .tag{display:inline-flex;margin-bottom:12px;color:#7ea79a;
   .pp-insight{font-size:1rem;padding:14px 18px}
   .split-pane{min-height:220px}
   .split-visual{min-height:120px}
-  .market-circles{min-height:540px}
-  .market-circles .tam{left:6%;top:24px}
-  .market-circles .sam{left:24%;top:178px}
-  .market-circles .som{left:44%;top:290px}
+  .market-tier{padding:16px 18px}
+  .market-tier p{font-size:1.05rem}
+  .market-tier b{font-size:3rem}
+  .market-tier small{font-size:.9rem}
+  .market-tier.tam,.market-tier.sam,.market-tier.som{margin:0}
+  .market-tier::after{width:120px;height:20px}
   .competitor-grid{grid-template-columns:1fr;background:transparent;border:none;box-shadow:none;padding:0;gap:14px}
   .competitor-col{min-height:auto}
   .competitor-col header{font-size:1.25rem;padding:18px 12px}
