@@ -337,13 +337,13 @@
 
           <div class="fd-main">
             <article class="fd-curve">
-              <h4>Projection de croissance (faux montants)</h4>
+              <h4>Évolution du CA (données réelles Y1 → Y5)</h4>
               <div class="fd-chart-wrap">
                 <svg viewBox="0 0 1000 360" class="fd-curve-svg" aria-label="Courbe de croissance avec axes">
                   <defs>
                     <linearGradient id="areaGlow" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stop-color="#b071ff" stop-opacity="0.35" />
-                      <stop offset="100%" stop-color="#b071ff" stop-opacity="0.04" />
+                      <stop offset="0%" stop-color="#62ffbd" stop-opacity="0.42" />
+                      <stop offset="100%" stop-color="#62ffbd" stop-opacity="0.05" />
                     </linearGradient>
                   </defs>
                   <line class="axis" x1="70" y1="20" x2="70" y2="300" />
@@ -354,17 +354,17 @@
                     <line x1="70" y1="132" x2="960" y2="132" />
                     <line x1="70" y1="76" x2="960" y2="76" />
                   </g>
-                  <path class="growth-area" d="M115 294 C 190 285, 280 272, 300 250 C 370 216, 470 166, 520 130 C 600 94, 680 70, 740 62 C 820 110, 900 160, 960 132 L960 300 L115 300 Z" />
-                  <path class="growth-line" d="M115 294 C 190 285, 280 272, 300 250 C 370 216, 470 166, 520 130 C 600 94, 680 70, 740 62 C 820 110, 900 160, 960 132" />
+                  <path class="growth-area" d="M115 295 L326 286 L538 248 L749 169 L960 53 L960 300 L115 300 Z" />
+                  <polyline class="growth-line" points="115,295 326,286 538,248 749,169 960,53" />
                 </svg>
                 <div class="fd-y-axis"><span>500k€</span><span>400k€</span><span>300k€</span><span>200k€</span><span>100k€</span></div>
-                <div class="fd-x-axis"><span>Y1<small>9 675€</small></span><span>Y2<small>30 433€</small></span><span>Y3<small>81 924€</small></span><span>Y4<small>202 995€</small></span><span>Y5<small>461 402€</small></span></div>
+                <div class="fd-x-axis"><span>Y1<small>9 675€</small></span><span>Y2<small>25 248€</small></span><span>Y3<small>92 359,90€</small></span><span>Y4<small>234 018,96€</small></span><span>Y5<small>440 812,73€</small></span></div>
               </div>
             </article>
             <aside class="fd-side">
               <article class="fd-box">
                 <h5>Croissance</h5>
-                <p>Trajectoire moyenne projetée du CA: <b>+20%/an</b>.</p>
+                <p>Courbe calée sur vos données de CA de Y1 à Y5, sans approximation.</p>
               </article>
               <article class="fd-box">
                 <h5>Rentabilité</h5>

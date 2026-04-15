@@ -332,7 +332,7 @@ p{color:var(--muted)} .tag{display:inline-flex;margin-bottom:12px;color:#7ea79a;
 .fd-curve-svg .axis{stroke:rgba(196,223,255,.6);stroke-width:2}
 .fd-curve-svg .grid-lines line{stroke:rgba(185,216,255,.2);stroke-width:1}
 .fd-curve-svg .growth-area{fill:url(#areaGlow);opacity:0;transform-origin:bottom;transform:scaleY(.2)}
-.fd-curve-svg .growth-line{fill:none;stroke:#c06bff;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 10px rgba(192,107,255,.75));stroke-dasharray:1800;stroke-dashoffset:1800;opacity:0}
+.fd-curve-svg .growth-line{fill:none;stroke:#62ffbd;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 12px rgba(98,255,189,.9));stroke-dasharray:1800;stroke-dashoffset:1800;opacity:0}
 .finance-duplicate.visible .fd-curve-svg .growth-line{animation:drawGrowth 2.2s ease forwards;opacity:1}
 .finance-duplicate.visible .fd-curve-svg .growth-area{animation:areaReveal 1.6s cubic-bezier(0.22,1,0.36,1) forwards;opacity:1}
 .fd-y-axis{position:absolute;left:4px;top:24px;bottom:58px;display:grid;align-content:space-between;color:#b7d8ff;font-size:.78rem}
