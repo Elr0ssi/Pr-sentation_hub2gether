@@ -41,7 +41,7 @@
 .panel .container .tag{margin-bottom:2px}
 .panel .container > h3{margin-top:0}
 
-h1,h2,h3,h4,p{margin:0} h2,h3,h4{font-family:Outfit,sans-serif} h2{font-size:clamp(1.8rem,4vw,3rem);text-align:center;max-width:900px} h3{font-size:clamp(1.9rem,3.4vw,3rem);max-width:none;width:100%}
+h1,h2,h3,h4,p{margin:0} h2,h3,h4{font-family:Outfit,sans-serif} h2{font-size:clamp(1.8rem,4vw,3rem);text-align:center;max-width:900px} h3{font-size:clamp(1.9rem,3.8vw,3.2rem);max-width:none;width:100%}
 h1,h2,h3,h4,.hero-title,.project-title-main,.neon-logo,.team-meta b,.bm-card h4,.menu a,.tag{font-family:Outfit,sans-serif!important}
 p{color:var(--muted)} .tag{display:inline-flex;margin-bottom:12px;border:1px solid rgba(247,198,90,.4);color:var(--yellow);border-radius:999px;padding:6px 12px;font-size:.78rem;letter-spacing:.09em;text-transform:uppercase}
 
@@ -92,7 +92,7 @@ p{color:var(--muted)} .tag{display:inline-flex;margin-bottom:12px;border:1px sol
 .solution-icon-fallback{width:52px;height:52px;border-radius:10px;border:1px dashed rgba(255,255,255,.35);display:grid;place-items:center;font-size:.62rem;color:#dfe6ff}
 .solution-card h4{color:var(--yellow);font-size:1.12rem}
 .solution-card p{font-size:.92rem;line-height:1.45;color:#d2dae8}
-.solutions h3{font-size:clamp(1.25rem,2.1vw,1.8rem);max-width:640px}
+.solutions h3{font-size:clamp(1.9rem,3.8vw,3.2rem);max-width:100%}
 .phone-layout .solution-card{opacity:0;transform:scale(.84);transform-origin:center center}
 .phone-layout.visible .solution-card:nth-child(1){animation:solutionCardIn .9s cubic-bezier(.2,.9,.2,1) forwards}
 .phone-layout.visible .solution-card:nth-child(2){animation:solutionCardIn .9s cubic-bezier(.2,.9,.2,1) .2s forwards}
@@ -211,7 +211,7 @@ p{color:var(--muted)} .tag{display:inline-flex;margin-bottom:12px;border:1px sol
 .constat-block .problem-flow .flow-item.danger{background:rgba(247,198,90,.2);color:#5f4305}
 .constat-block .problem-source{color:#48645b}
 
-.project-title-main{font-size:clamp(1.9rem,3.4vw,3rem);letter-spacing:.01em;margin-bottom:8px}
+.project-title-main{font-size:clamp(1.9rem,3.8vw,3.2rem);letter-spacing:.01em;margin-bottom:8px}
 .project-subline{font-size:1rem;color:#cde4da;max-width:900px;margin-bottom:8px}
 .project-subline span{color:var(--yellow);font-weight:700}
 .project-scroll{margin-top:18px;display:grid;gap:12px}
