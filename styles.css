@@ -278,6 +278,7 @@ p{color:var(--muted)} .tag{display:inline-flex;margin-bottom:12px;color:#7ea79a;
   .constat-2-grid,.project-split,.why-now-grid,.fd-main,.fd-indicators,.pp-layout,.pp-main-card{grid-template-columns:1fr}
   .constat-2-footer{font-size:1.4rem}
   .painpoint-premium{padding:24px 0}
+  .pp-stats-col{padding-top:0}
   .pp-budget-pill{position:static;margin:0 0 8px;width:max-content;max-width:100%}
   .pp-budget-pill strong{font-size:1.85rem}
   .pp-budget-pill span{font-size:.92rem}
@@ -359,22 +360,22 @@ p{color:var(--muted)} .tag{display:inline-flex;margin-bottom:12px;color:#7ea79a;
 .pp-label{text-transform:uppercase;letter-spacing:.2em;color:#88a29a;font-size:.82rem}
 .pp-head h3{font-size:clamp(1.9rem,3.8vw,3.2rem);line-height:1.1;color:#24343d;max-width:100%}
 .pp-head h3 span{color:#f1b637}
-.pp-layout{display:grid;grid-template-columns:1.55fr 1fr;gap:16px;align-items:stretch}
-.pp-main-card{background:#f7f7f7;border-radius:24px;padding:10px;display:grid;grid-template-columns:1fr;gap:12px;box-shadow:0 14px 26px rgba(18,26,31,.06);min-height:360px}
+.pp-layout{display:grid;grid-template-columns:1fr 1.35fr;gap:14px;align-items:stretch}
+.pp-main-card{background:#f7f7f7;border-radius:24px;padding:10px;display:grid;grid-template-columns:1fr;gap:12px;box-shadow:0 14px 26px rgba(18,26,31,.06);min-height:300px}
 .pp-main-card.only-visual{position:relative;overflow:hidden}
-.pp-budget-pill{position:absolute;top:16px;right:16px;z-index:2;background:rgba(66,90,82,.86);backdrop-filter:blur(3px);color:#f4fff8;border:1px solid rgba(177,210,198,.36);border-radius:18px;padding:12px 22px;display:grid;gap:2px;box-shadow:0 10px 20px rgba(19,28,33,.2)}
-.pp-budget-pill strong{font-family:'Space Grotesk',sans-serif;font-size:2.2rem;line-height:1;color:#fff}
-.pp-budget-pill span{font-size:1.02rem;color:rgba(241,250,245,.92)}
+.pp-budget-pill{position:absolute;top:-34px;right:-6px;z-index:3;background:rgba(66,90,82,.88);backdrop-filter:blur(3px);color:#f4fff8;border:1px solid rgba(177,210,198,.38);border-radius:18px;padding:10px 18px;display:grid;gap:2px;box-shadow:0 10px 20px rgba(19,28,33,.26)}
+.pp-budget-pill strong{font-family:'Space Grotesk',sans-serif;font-size:2rem;line-height:1;color:#fff}
+.pp-budget-pill span{font-size:.95rem;color:rgba(241,250,245,.92)}
 
 .pp-main-visual{display:grid;place-items:center;min-height:100%;height:100%}
-.pp-main-visual img{width:100%;height:100%;max-height:none;object-fit:cover;border-radius:18px;opacity:.96;filter:drop-shadow(0 8px 20px rgba(42,92,76,.12))}
+.pp-main-visual img{width:100%;height:100%;max-height:none;object-fit:cover;border-radius:18px;opacity:.96;filter:drop-shadow(0 8px 20px rgba(42,92,76,.12));transform:scale(.93)}
 .pp-fallback{width:100%;height:100%;min-height:320px;border:1px dashed #d6e1dc;border-radius:16px;display:grid;place-items:center;text-align:center;color:#7e9088;padding:16px}
-.pp-stats-col{display:grid;gap:20px}
-.pp-stat-card{background:#fff;border:1px solid #eee;border-radius:16px;padding:24px;box-shadow:0 12px 22px rgba(19,28,33,.06);display:grid;gap:6px;transition:transform .25s ease, box-shadow .25s ease}
+.pp-stats-col{position:relative;display:grid;gap:12px;padding-top:34px}
+.pp-stat-card{background:#fff;border:1px solid #eee;border-radius:16px;padding:18px 20px;box-shadow:0 12px 22px rgba(19,28,33,.06);display:grid;gap:4px;transition:transform .25s ease, box-shadow .25s ease}
 .pp-stat-card:hover{transform:translateY(-4px);box-shadow:0 16px 26px rgba(19,28,33,.12)}
-.pp-stat-card b{font-size:2.7rem;line-height:.95;color:#2f7a66;font-family:'Space Grotesk',sans-serif}
+.pp-stat-card b{font-size:2.2rem;line-height:.95;color:#2f7a66;font-family:'Space Grotesk',sans-serif}
 .pp-stat-card.s2 b{color:#f1b637}.pp-stat-card.s3 b{color:#e48163}
-.pp-stat-card h4{font-size:1.25rem;color:#2d3b43;margin:0}.pp-stat-card p{margin:0;font-size:1.02rem;line-height:1.35;color:#2d3b43}.pp-stat-card small{font-size:.82rem;color:rgba(45,59,67,.62);font-style:italic}
+.pp-stat-card h4{font-size:1.05rem;color:#2d3b43;margin:0}.pp-stat-card p{margin:0;font-size:.92rem;line-height:1.3;color:#2d3b43}.pp-stat-card small{font-size:.76rem;color:rgba(45,59,67,.62);font-style:italic}
 .pp-insight{margin:2px auto 0;background:linear-gradient(90deg,rgba(125,211,173,.22),rgba(241,182,55,.2));border:1px solid rgba(125,211,173,.25);border-radius:999px;padding:14px 28px;text-align:center;font-size:1.35rem;color:#1f2f37;font-weight:600;box-shadow:0 8px 16px rgba(25,37,43,.05)}
 .pp-insight span{color:#f1b637}
 
