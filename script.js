@@ -6,11 +6,33 @@ const panelIndexById = new Map(panels.map((panel, index) => [panel.id, index]));
 const menuTargets = menuLinks
   .map((link) => ({ link, id: link.getAttribute('href')?.slice(1) || '' }))
   .filter((item) => panelIndexById.has(item.id));
+const introOverlay = document.querySelector('#introOverlay');
+let introActive = Boolean(introOverlay);
+let introStarted = false;
 let isAnimating = false;
 let currentIndex = 0;
 let wheelAccum = 0;
 let wheelResetTimer;
 let lastWheelTrigger = 0;
+
+if (introActive) {
+  document.body.classList.add('intro-active');
+}
+
+function startIntroSequence() {
+  if (!introOverlay || !introActive || introStarted) return;
+  introStarted = true;
+  introOverlay.classList.add('logo-in');
+  setTimeout(() => {
+    introOverlay.classList.add('slide-up');
+  }, 900);
+  setTimeout(() => {
+    introActive = false;
+    document.body.classList.remove('intro-active');
+    introOverlay.remove();
+    detectCurrentIndex();
+  }, 1650);
+}
 
 function clampIndex(i) {
   return Math.max(0, Math.min(panels.length - 1, i));
@@ -136,6 +158,11 @@ function handlePreviewWheel(direction) {
 }
 
 page.addEventListener('wheel', (event) => {
+  if (introActive) {
+    event.preventDefault();
+    startIntroSequence();
+    return;
+  }
   if (window.innerWidth <= 980 || isAnimating) return;
   event.preventDefault();
 
@@ -293,6 +320,12 @@ page.addEventListener('scroll', () => {
   detectCurrentIndex();
 });
 
+page.addEventListener('touchmove', (event) => {
+  if (!introActive) return;
+  event.preventDefault();
+  startIntroSequence();
+}, { passive: false });
+
 detectCurrentIndex();
 
 
@@ -318,6 +351,11 @@ if (toggleFullscreenBtn) {
 }
 
 document.addEventListener('keydown', (event) => {
+  if (introActive && (event.key === 'ArrowDown' || event.key === 'PageDown' || event.key === ' ')) {
+    event.preventDefault();
+    startIntroSequence();
+    return;
+  }
   if (window.innerWidth <= 980 || isAnimating) return;
   if (event.key === 'ArrowDown' || event.key === 'PageDown') {
     event.preventDefault();
