@@ -1,10 +1,16 @@
 :root { --bg:#090b12; --bg2:#10131d; --panel:#171b25; --line:rgba(255,255,255,.14); --text:#f5f7ff; --muted:#c7cede; --mint:#7dd3ad; --deep:#05382d; --yellow:#f7c65a; --pink:#f066ff; --blue:#6ee4ff; }
 *{box-sizing:border-box} html,body{margin:0;padding:0;font-family:Outfit,sans-serif;background:var(--bg);color:var(--text)} body{overflow:hidden}
-.intro-overlay{position:fixed;inset:0;z-index:500;background:#000;display:grid;place-items:center;transform:translateY(0);transition:transform .78s cubic-bezier(.22,1,.36,1),opacity .45s ease}
-.intro-logo{width:min(72vw,900px);max-width:90vw;opacity:0;transform:scale(.2);filter:drop-shadow(0 0 26px rgba(125,211,173,.28));transition:transform .82s cubic-bezier(.22,1,.36,1),opacity .82s ease}
+.intro-overlay{position:fixed;inset:0;z-index:500;background:#fff;display:grid;place-items:center;transform:translateY(0);transition:transform .78s cubic-bezier(.22,1,.36,1),opacity .55s ease}
+.intro-logo{width:min(72vw,900px);max-width:90vw;opacity:0;transform:scale(.2);filter:drop-shadow(0 0 26px rgba(125,211,173,.2));transition:transform .82s cubic-bezier(.22,1,.36,1),opacity .82s ease}
 .intro-overlay.logo-in .intro-logo{opacity:1;transform:scale(1)}
-.intro-overlay.slide-up{transform:translateY(-100%);opacity:.98}
-body.intro-active .topbar,body.intro-active .progress,body.intro-active #page{opacity:0;pointer-events:none;user-select:none}
+.intro-overlay.slide-up{transform:translateY(-100%);opacity:0}
+.intro-fullscreen-btn{position:absolute;top:18px;right:18px;border:1px solid rgba(16,24,20,.24);background:#fff;color:#0f2019;border-radius:999px;padding:10px 16px;font-weight:700;cursor:pointer}
+body.intro-active #page{opacity:0;pointer-events:none;user-select:none}
+body.intro-active .topbar{opacity:0;clip-path:inset(0 100% 0 0);pointer-events:none}
+body.intro-revealed .topbar{opacity:1;clip-path:inset(0 0 0 0);transition:clip-path .95s cubic-bezier(.22,1,.36,1),opacity .65s ease}
+body.intro-revealed #page{opacity:1;transition:opacity .9s ease}
+body.intro-active #hero .container{opacity:0;transform:translateY(70px)}
+body.intro-revealed #hero .container{opacity:1;transform:translateY(0);transition:transform .9s cubic-bezier(.22,1,.36,1),opacity .9s ease}
 .topbar{position:fixed;top:0;left:0;right:0;z-index:70;margin:0 auto;width:min(100%,1920px);padding:14px 22px;display:flex;justify-content:space-between;align-items:center;gap:16px;border-bottom:1px solid var(--line);border-bottom-left-radius:34px;border-bottom-right-radius:34px;background:#ffffff;box-shadow:0 10px 25px rgba(0,0,0,.12)}
 .brand-wrap{display:flex;align-items:center;height:46px;overflow:visible}.brand-logo{height:46px;width:auto;transform:scale(1.3);transform-origin:left center}.brand{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:.04em}.brand span{color:var(--yellow)}
 .menu{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}.menu a{--focus:0;color:#1b2a22;text-decoration:none;font-size:.96rem;font-weight:600;display:flex;align-items:center;padding:6px 10px;border-radius:999px;transform:scale(calc(1 + var(--focus) * 0.07));transform-origin:center center;transition:transform .45s cubic-bezier(.22,1,.36,1),background .45s cubic-bezier(.22,1,.36,1),color .45s cubic-bezier(.22,1,.36,1)}.menu a:hover{color:#000}

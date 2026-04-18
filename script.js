@@ -7,6 +7,7 @@ const menuTargets = menuLinks
   .map((link) => ({ link, id: link.getAttribute('href')?.slice(1) || '' }))
   .filter((item) => panelIndexById.has(item.id));
 const introOverlay = document.querySelector('#introOverlay');
+const introFullscreenBtn = document.querySelector('#introFullscreen');
 let introActive = Boolean(introOverlay);
 let introStarted = false;
 let isAnimating = false;
@@ -25,6 +26,7 @@ function startIntroSequence() {
   introOverlay.classList.add('logo-in');
   setTimeout(() => {
     introOverlay.classList.add('slide-up');
+    document.body.classList.add('intro-revealed');
   }, 900);
   setTimeout(() => {
     introActive = false;
@@ -160,6 +162,7 @@ function handlePreviewWheel(direction) {
 page.addEventListener('wheel', (event) => {
   if (introActive) {
     event.preventDefault();
+    if (Math.abs(event.deltaY) < 2) return;
     startIntroSequence();
     return;
   }
@@ -320,42 +323,36 @@ page.addEventListener('scroll', () => {
   detectCurrentIndex();
 });
 
-page.addEventListener('touchmove', (event) => {
-  if (!introActive) return;
-  event.preventDefault();
-  startIntroSequence();
-}, { passive: false });
-
 detectCurrentIndex();
 
 
 const toggleFullscreenBtn = document.querySelector('#toggleFullscreen');
-if (toggleFullscreenBtn) {
-  toggleFullscreenBtn.addEventListener('click', async () => {
-    try {
-      if (!document.fullscreenElement) {
-        await document.documentElement.requestFullscreen();
-        toggleFullscreenBtn.textContent = '🡼';
-      } else {
-        await document.exitFullscreen();
-        toggleFullscreenBtn.textContent = '⛶';
-      }
-    } catch (error) {
-      console.warn("Impossible d'activer le plein écran automatiquement.", error);
+async function toggleFullscreenMode() {
+  try {
+    if (!document.fullscreenElement) {
+      await document.documentElement.requestFullscreen();
+      if (toggleFullscreenBtn) toggleFullscreenBtn.textContent = '🡼';
+    } else {
+      await document.exitFullscreen();
+      if (toggleFullscreenBtn) toggleFullscreenBtn.textContent = '⛶';
     }
-  });
+  } catch (error) {
+    console.warn("Impossible d'activer le plein écran automatiquement.", error);
+  }
+}
 
+if (toggleFullscreenBtn) {
+  toggleFullscreenBtn.addEventListener('click', toggleFullscreenMode);
   document.addEventListener('fullscreenchange', () => {
     toggleFullscreenBtn.textContent = document.fullscreenElement ? '🡼' : '⛶';
   });
 }
 
+if (introFullscreenBtn) {
+  introFullscreenBtn.addEventListener('click', toggleFullscreenMode);
+}
+
 document.addEventListener('keydown', (event) => {
-  if (introActive && (event.key === 'ArrowDown' || event.key === 'PageDown' || event.key === ' ')) {
-    event.preventDefault();
-    startIntroSequence();
-    return;
-  }
   if (window.innerWidth <= 980 || isAnimating) return;
   if (event.key === 'ArrowDown' || event.key === 'PageDown') {
     event.preventDefault();
