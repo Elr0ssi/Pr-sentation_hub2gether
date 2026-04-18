@@ -36,6 +36,13 @@ function startIntroSequence() {
   }, 1650);
 }
 
+function handleIntroWheel(event) {
+  if (!introActive) return;
+  event.preventDefault();
+  if (Math.abs(event.deltaY) < 2) return;
+  startIntroSequence();
+}
+
 function clampIndex(i) {
   return Math.max(0, Math.min(panels.length - 1, i));
 }
@@ -161,9 +168,7 @@ function handlePreviewWheel(direction) {
 
 page.addEventListener('wheel', (event) => {
   if (introActive) {
-    event.preventDefault();
-    if (Math.abs(event.deltaY) < 2) return;
-    startIntroSequence();
+    handleIntroWheel(event);
     return;
   }
   if (window.innerWidth <= 980 || isAnimating) return;
@@ -187,6 +192,10 @@ page.addEventListener('wheel', (event) => {
   if (handleProjectWheel(direction) || handlePreviewWheel(direction)) return;
   goToIndex(currentIndex + direction);
 }, { passive: false });
+
+if (introOverlay) {
+  introOverlay.addEventListener('wheel', handleIntroWheel, { passive: false });
+}
 
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
