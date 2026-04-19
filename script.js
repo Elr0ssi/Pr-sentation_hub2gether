@@ -8,9 +8,6 @@ const menuTargets = menuLinks
   .filter((item) => panelIndexById.has(item.id));
 let isAnimating = false;
 let currentIndex = 0;
-let wheelAccum = 0;
-let wheelResetTimer;
-let lastWheelTrigger = 0;
 const topbar = document.querySelector('.topbar');
 const customCursor = document.querySelector('#customCursor');
 const heroTitle = document.querySelector('.hero-title');
@@ -102,7 +99,6 @@ function goToIndex(targetIndex) {
     const timeout = performance.now() - start > 1300;
     if (reached || timeout) {
       isAnimating = false;
-      wheelAccum = 0;
       detectCurrentIndex();
       return;
     }
@@ -150,26 +146,8 @@ function handlePreviewWheel(direction) {
 
 page.addEventListener('wheel', (event) => {
   if (window.innerWidth <= 980 || isAnimating) return;
-  event.preventDefault();
-
-  const now = Date.now();
-  if (now - lastWheelTrigger < 420) return;
-
-  wheelAccum += event.deltaY;
-  clearTimeout(wheelResetTimer);
-  wheelResetTimer = setTimeout(() => {
-    wheelAccum = 0;
-  }, 110);
-
-  if (Math.abs(wheelAccum) < 70) return;
-
-  const direction = wheelAccum > 0 ? 1 : -1;
-  wheelAccum = 0;
-  lastWheelTrigger = now;
-
-  if (handleProjectWheel(direction) || handlePreviewWheel(direction)) return;
-  goToIndex(currentIndex + direction);
-}, { passive: false });
+  detectCurrentIndex();
+}, { passive: true });
 
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
