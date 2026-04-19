@@ -311,7 +311,13 @@ detectCurrentIndex();
 
 if (customCursor) {
   let cx = 0; let cy = 0; let tx = 0; let ty = 0;
-  document.addEventListener('mousemove', (event) => { tx = event.clientX; ty = event.clientY; });
+  let hideTimer;
+  document.addEventListener('mousemove', (event) => {
+    tx = event.clientX; ty = event.clientY;
+    customCursor.classList.add('visible');
+    clearTimeout(hideTimer);
+    hideTimer = setTimeout(() => customCursor.classList.remove('visible'), 900);
+  });
   document.addEventListener('mouseover', (event) => {
     customCursor.classList.toggle('active', Boolean(event.target.closest('a,button,.btn')));
   });
