@@ -10,6 +10,7 @@ let isAnimating = false;
 let currentIndex = 0;
 let wheelAccum = 0;
 let wheelResetTimer;
+let wheelLockUntil = 0;
 const topbar = document.querySelector('.topbar');
 const customCursor = document.querySelector('#customCursor');
 const heroTitle = document.querySelector('.hero-title');
@@ -148,6 +149,7 @@ function handlePreviewWheel(direction) {
 
 page.addEventListener('wheel', (event) => {
   if (window.innerWidth <= 980 || isAnimating) return;
+  if (Date.now() < wheelLockUntil) return;
   event.preventDefault();
 
   wheelAccum += event.deltaY;
@@ -158,9 +160,11 @@ page.addEventListener('wheel', (event) => {
   const direction = wheelAccum > 0 ? 1 : -1;
   wheelAccum = 0;
   if (handleProjectWheel(direction) || handlePreviewWheel(direction)) {
+    wheelLockUntil = Date.now() + 520;
     return;
   }
   goToIndex(currentIndex + direction);
+  wheelLockUntil = Date.now() + 520;
 }, { passive: false });
 
 const revealObserver = new IntersectionObserver((entries) => {

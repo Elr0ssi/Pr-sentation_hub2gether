@@ -466,10 +466,10 @@ p{color:var(--muted)} .tag{display:inline-flex;margin-bottom:12px;color:#7ea79a;
 .painpoint-premium.visible .pp-insight span::before{width:100%}
 
 .neon-solution-panel{background:
-radial-gradient(ellipse at 20% 50%, #166534 0%, transparent 60%),
-radial-gradient(ellipse at 80% 20%, #15803d 0%, transparent 60%),
-radial-gradient(ellipse at 50% 80%, #0f766e 0%, transparent 55%),
-#0f4c2a;animation:meshMove 8s ease-in-out infinite alternate}
+radial-gradient(ellipse at 20% 50%, #0f5a47 0%, transparent 60%),
+radial-gradient(ellipse at 80% 20%, #0f6b54 0%, transparent 60%),
+radial-gradient(ellipse at 50% 80%, #0c4f3f 0%, transparent 55%),
+#08362b;animation:meshMove 8s ease-in-out infinite alternate}
 @keyframes meshMove{0%{background-position:0% 0%,100% 0%,50% 100%}100%{background-position:10% 8%,90% 12%,45% 92%}}
 .neon-solution-wrap{display:grid;gap:12px}
 .neon-kicker{color:#78e5bb;letter-spacing:.05em}
