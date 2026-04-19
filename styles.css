@@ -403,21 +403,21 @@ p{color:var(--muted)} .tag{display:inline-flex;margin-bottom:12px;color:#7ea79a;
 @keyframes drawGrowth{to{stroke-dashoffset:0}}
 @keyframes areaReveal{from{transform:scaleY(.2);opacity:.1}to{transform:scaleY(1);opacity:1}}
 
-.join-panel{background:linear-gradient(160deg,#053527,#062b21)}
+.join-panel{background:linear-gradient(160deg,#ffffff,#f5f8f7)}
 .join-wrap{display:grid;gap:18px}
-.join-kicker{color:#68ddb0;font-size:1.6rem;letter-spacing:.02em}
+.join-kicker{color:#2c8e6c;font-size:1.25rem;letter-spacing:.02em}
 .join-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center}
 .join-copy{display:grid;gap:16px}
-.join-copy p{font-size:1.35rem;line-height:1.35;color:#edf7f2}
-.join-copy p b{color:#fff}
-.join-copy p span{color:#e2d75c;font-weight:800}
-.join-copy h4{font-size:1.65rem;color:#fff}
+.join-copy p{font-size:1.25rem;line-height:1.35;color:#17352b}
+.join-copy p b{color:#0f241d}
+.join-copy p span{color:#2c8e6c;font-weight:800}
+.join-copy h4{font-size:1.5rem;color:#0f241d}
 .join-copy ul{list-style:none;padding:0;margin:0;display:grid;gap:12px}
-.join-copy li{font-size:1.2rem;line-height:1.35;color:#e4f6ee}
-.join-visual{position:relative;border:1px solid rgba(221,232,226,.24);border-radius:34px;background:#0a1f18;padding:8px;display:grid;min-height:420px}
+.join-copy li{font-size:1.12rem;line-height:1.35;color:#234438}
+.join-visual{position:relative;border:1px solid rgba(19,45,36,.14);border-radius:34px;background:#f3f8f5;padding:8px;display:grid;min-height:420px}
 .join-visual::after{display:none}
-.join-visual img{width:100%;height:100%;justify-self:center;max-height:420px;object-fit:contain;border-radius:22px;background:#050708;border:1px solid rgba(224,236,231,.38)}
-.join-fallback{border:1px dashed rgba(221,232,226,.42);border-radius:24px;display:grid;place-items:center;color:#cce3da;font-size:1rem}
+.join-visual img{width:100%;height:100%;justify-self:center;max-height:420px;object-fit:contain;border-radius:22px;background:#ffffff;border:1px solid rgba(19,45,36,.14);padding:16px}
+.join-fallback{border:1px dashed rgba(19,45,36,.28);border-radius:24px;display:grid;place-items:center;color:#2f5a4b;font-size:1rem}
 
 
 .painpoint-premium{max-width:1200px;padding:22px 0;display:grid;gap:14px;font-family:Inter,Outfit,sans-serif;align-content:center}
