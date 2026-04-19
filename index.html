@@ -348,54 +348,62 @@
 
       <section class="panel dark" id="projections">
         <div class="container fade-in finance-duplicate">
-          <p class="constat-2-kicker">BUSINESS MODEL</p>
-          <h3>PRÉVISIONS FINANCIÈRES</h3>
+          <p class="constat-2-kicker">PRÉVISIONS FINANCIÈRES</p>
+          <h3>PRÉVISIONS À 5 ANS</h3>
 
           <div class="fd-indicators">
-            <div><b>ARR à 3 ans</b><span>4,8 M€</span></div>
-            <div><b>RN à 3 ans</b><span>1,1 M€</span></div>
-            <div><b>Cash-flow à 3 ans</b><span>1,4 M€</span></div>
-            <div><b>Perspective CA</b><span>+20% / an</span></div>
+            <div><b>MRR Année 5</b><span>41 000€</span></div>
+            <div><b>Churn Rate Annuel</b><span>20%</span></div>
+            <div><b>LTV/CAC</b><span>6,4</span></div>
+            <div><b>Chiffre d’affaires</b><span>470 000€</span></div>
           </div>
 
           <div class="fd-main">
             <article class="fd-curve">
-              <h4>Évolution du CA (données réelles Y1 → Y5)</h4>
+              <h4>ARR à la clôture VS Charges annuelles</h4>
               <div class="fd-chart-wrap">
                 <svg viewBox="0 0 1000 360" class="fd-curve-svg" aria-label="Courbe de croissance avec axes">
                   <defs>
                     <linearGradient id="areaGlow" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stop-color="#62ffbd" stop-opacity="0.42" />
-                      <stop offset="100%" stop-color="#62ffbd" stop-opacity="0.05" />
+                      <stop offset="0%" stop-color="#6cd9ad" stop-opacity="0.32" />
+                      <stop offset="100%" stop-color="#6cd9ad" stop-opacity="0.08" />
                     </linearGradient>
                   </defs>
-                  <line class="axis" x1="70" y1="20" x2="70" y2="300" />
-                  <line class="axis" x1="70" y1="300" x2="960" y2="300" />
+                  <line class="axis" x1="80" y1="24" x2="80" y2="300" />
+                  <line class="axis" x1="80" y1="300" x2="960" y2="300" />
                   <g class="grid-lines">
-                    <line x1="70" y1="244" x2="960" y2="244" />
-                    <line x1="70" y1="188" x2="960" y2="188" />
-                    <line x1="70" y1="132" x2="960" y2="132" />
-                    <line x1="70" y1="76" x2="960" y2="76" />
+                    <line x1="80" y1="254" x2="960" y2="254" />
+                    <line x1="80" y1="208" x2="960" y2="208" />
+                    <line x1="80" y1="162" x2="960" y2="162" />
+                    <line x1="80" y1="116" x2="960" y2="116" />
+                    <line x1="80" y1="70" x2="960" y2="70" />
                   </g>
-                  <path class="growth-area" d="M115 295 L326 286 L538 248 L749 169 L960 53 L960 300 L115 300 Z" />
-                  <polyline class="growth-line" points="115,295 326,286 538,248 749,169 960,53" />
+                  <g class="bar-group">
+                    <rect x="132" y="295" width="72" height="5" />
+                    <rect x="308" y="290" width="72" height="10" />
+                    <rect x="484" y="275" width="72" height="25" />
+                    <rect x="660" y="265" width="72" height="35" />
+                    <rect x="836" y="249" width="72" height="51" />
+                  </g>
+                  <path class="growth-area" d="M168 295 L344 286 L520 254 L696 185 L872 75 L872 300 L168 300 Z" />
+                  <polyline class="growth-line" points="168,295 344,286 520,254 696,185 872,75" />
                 </svg>
-                <div class="fd-y-axis"><span>500k€</span><span>400k€</span><span>300k€</span><span>200k€</span><span>100k€</span></div>
-                <div class="fd-x-axis"><span>Y1<small>9 675€</small></span><span>Y2<small>25 248€</small></span><span>Y3<small>92 359,90€</small></span><span>Y4<small>234 018,96€</small></span><span>Y5<small>440 812,73€</small></span></div>
+                <div class="fd-y-axis"><span>600 000€</span><span>500 000€</span><span>400 000€</span><span>300 000€</span><span>200 000€</span><span>100 000€</span></div>
+                <div class="fd-x-axis"><span>Année 1</span><span>Année 2</span><span>Année 3</span><span>Année 4</span><span>Année 5</span></div>
+                <div class="fd-legend">
+                  <span><i class="swatch charges"></i>Charges</span>
+                  <span><i class="swatch arr"></i>ARR</span>
+                </div>
               </div>
             </article>
             <aside class="fd-side">
-              <article class="fd-box">
-                <h5>Croissance</h5>
-                <p>Courbe calée sur vos données de CA de Y1 à Y5, sans approximation.</p>
-              </article>
-              <article class="fd-box">
-                <h5>Rentabilité</h5>
-                <p>Seuil de rentabilité attendu au <b>T3 de l’année 3</b>.</p>
-              </article>
-              <article class="fd-box highlight">
-                <h5>Objectif 24 mois</h5>
-                <p>Passer de 25 à 180 entreprises clientes, avec une expansion multi-secteurs.</p>
+              <article class="fd-roadmap">
+                <h5>Roadmap</h5>
+                <ul>
+                  <li><b>Stratégie de Prix :</b> Augmentation progressive de l'ARPU et optimisation de la rétention.</li>
+                  <li><b>Stratégie RH & Acquisition :</b> Recrutement d’un profil commercial dès l'Année 2 pour démultiplier l'acquisition.</li>
+                  <li><b>Structure Financière :</b> Autofinancement grâce aux paiements annuels et structure de coûts fixes ultra-légère.</li>
+                </ul>
               </article>
             </aside>
           </div>
