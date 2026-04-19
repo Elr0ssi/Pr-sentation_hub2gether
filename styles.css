@@ -83,11 +83,24 @@ p{color:var(--muted)} .tag{display:inline-flex;margin-bottom:12px;color:#7ea79a;
 
 .phone-layout{display:grid;grid-template-columns:1fr;gap:18px;align-items:center}.solutions{display:grid;gap:14px}
 .solution-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;width:min(980px,100%);justify-self:center}
-.solution-card{border-radius:18px;padding:18px;display:grid;grid-template-columns:98px 1fr;gap:18px;align-items:center;min-height:186px}
+.solution-card{border-radius:18px;padding:18px;display:grid;grid-template-columns:128px 1fr;gap:16px;align-items:center;min-height:186px}
 .solution-aside{display:grid;gap:14px;justify-items:center;align-content:start}
-.solution-aside i{display:none}
-.solution-aside img{width:150px;height:150px;object-fit:contain;display:block}
-.solution-icon-fallback{width:150px;height:150px;border-radius:12px;border:1px dashed rgba(255,255,255,.35);display:grid;place-items:center;font-size:.78rem;color:#dfe6ff}
+.solution-aside i{
+  width:108px;
+  height:136px;
+  border-radius:14px;
+  display:grid;
+  place-items:center;
+  font-style:normal;
+  font-weight:800;
+  font-size:2.1rem;
+  color:#dffff2;
+  background:linear-gradient(145deg,rgba(108,241,186,.32),rgba(79,198,158,.16));
+  border:1px solid rgba(139,255,212,.32);
+  box-shadow:inset 0 0 24px rgba(100,224,176,.18),0 10px 22px rgba(0,0,0,.2);
+}
+.solution-aside img{display:none}
+.solution-icon-fallback{display:none}
 .solution-card h4{color:var(--yellow);font-size:1.12rem}
 .solution-card p{font-size:.92rem;line-height:1.45;color:#d2dae8}
 .solutions h3{font-size:clamp(1.9rem,3.8vw,3.2rem);max-width:100%}
@@ -289,10 +302,10 @@ p{color:var(--muted)} .tag{display:inline-flex;margin-bottom:12px;color:#7ea79a;
   .hero-proof p{font-size:.95rem}
   .hero-avatars span,.hero-avatars b{width:34px;height:34px;font-size:.78rem}
   .solution-grid{grid-template-columns:1fr}
-  .solution-card{grid-template-columns:140px 1fr;min-height:0;padding:16px}
-  .solution-aside i{display:none}
-  .solution-aside img{width:118px;height:118px}
-  .solution-icon-fallback{width:118px;height:118px}
+  .solution-card{grid-template-columns:108px 1fr;min-height:0;padding:16px}
+  .solution-aside i{width:88px;height:108px;font-size:1.7rem}
+  .solution-aside img{display:none}
+  .solution-icon-fallback{display:none}
   .project-title-main{font-size:2rem}
   .project-subline{font-size:.92rem}
   .constat-2-grid,.project-split,.why-now-grid,.fd-main,.fd-indicators,.pp-layout,.pp-main-card{grid-template-columns:1fr}
