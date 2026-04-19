@@ -8,6 +8,7 @@ const menuTargets = menuLinks
   .filter((item) => panelIndexById.has(item.id));
 let isAnimating = false;
 let currentIndex = 0;
+let lastWheelTrigger = 0;
 const topbar = document.querySelector('.topbar');
 const customCursor = document.querySelector('#customCursor');
 const heroTitle = document.querySelector('.hero-title');
@@ -146,8 +147,18 @@ function handlePreviewWheel(direction) {
 
 page.addEventListener('wheel', (event) => {
   if (window.innerWidth <= 980 || isAnimating) return;
-  detectCurrentIndex();
-}, { passive: true });
+  if (Math.abs(event.deltaY) < 22) return;
+  event.preventDefault();
+  const now = Date.now();
+  if (now - lastWheelTrigger < 480) return;
+  const direction = event.deltaY > 0 ? 1 : -1;
+  if (handleProjectWheel(direction) || handlePreviewWheel(direction)) {
+    lastWheelTrigger = now;
+    return;
+  }
+  goToIndex(currentIndex + direction);
+  lastWheelTrigger = now;
+}, { passive: false });
 
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
