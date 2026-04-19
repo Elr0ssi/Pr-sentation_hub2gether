@@ -10,7 +10,20 @@ let isAnimating = false;
 let currentIndex = 0;
 let wheelAccum = 0;
 let wheelResetTimer;
-let lastWheelTrigger = 0;
+let wheelLockUntil = 0;
+const topbar = document.querySelector('.topbar');
+const customCursor = document.querySelector('#customCursor');
+const heroTitle = document.querySelector('.hero-title');
+const heroCanvas = document.querySelector('#heroNetwork');
+
+if (heroTitle) {
+  const text = heroTitle.innerHTML.replace(/<br\s*\/?>/gi, ' <br> ');
+  const parts = text.split(/\s+/).filter(Boolean);
+  heroTitle.innerHTML = parts.map((part, i) => {
+    if (part === '<br>') return '<br/>';
+    return `<span class="word" style="animation-delay:${(i * 0.08).toFixed(2)}s">${part}</span>`;
+  }).join(' ');
+}
 
 function clampIndex(i) {
   return Math.max(0, Math.min(panels.length - 1, i));
@@ -89,7 +102,6 @@ function goToIndex(targetIndex) {
     const timeout = performance.now() - start > 1300;
     if (reached || timeout) {
       isAnimating = false;
-      wheelAccum = 0;
       detectCurrentIndex();
       return;
     }
@@ -137,25 +149,22 @@ function handlePreviewWheel(direction) {
 
 page.addEventListener('wheel', (event) => {
   if (window.innerWidth <= 980 || isAnimating) return;
+  if (Date.now() < wheelLockUntil) return;
   event.preventDefault();
-
-  const now = Date.now();
-  if (now - lastWheelTrigger < 420) return;
 
   wheelAccum += event.deltaY;
   clearTimeout(wheelResetTimer);
-  wheelResetTimer = setTimeout(() => {
-    wheelAccum = 0;
-  }, 110);
-
-  if (Math.abs(wheelAccum) < 70) return;
+  wheelResetTimer = setTimeout(() => { wheelAccum = 0; }, 120);
+  if (Math.abs(wheelAccum) < 90) return;
 
   const direction = wheelAccum > 0 ? 1 : -1;
   wheelAccum = 0;
-  lastWheelTrigger = now;
-
-  if (handleProjectWheel(direction) || handlePreviewWheel(direction)) return;
+  if (handleProjectWheel(direction) || handlePreviewWheel(direction)) {
+    wheelLockUntil = Date.now() + 520;
+    return;
+  }
   goToIndex(currentIndex + direction);
+  wheelLockUntil = Date.now() + 520;
 }, { passive: false });
 
 const revealObserver = new IntersectionObserver((entries) => {
@@ -291,27 +300,97 @@ if (openPrototypeBtn && closePrototypeBtn && prototypeOverlay) {
 
 page.addEventListener('scroll', () => {
   detectCurrentIndex();
+  if (topbar) topbar.classList.toggle('compact', page.scrollTop > 36);
 });
 
 detectCurrentIndex();
 
+if (customCursor) {
+  let cx = 0; let cy = 0; let tx = 0; let ty = 0;
+  let hideTimer;
+  document.addEventListener('mousemove', (event) => {
+    tx = event.clientX; ty = event.clientY;
+    customCursor.classList.add('visible');
+    clearTimeout(hideTimer);
+    hideTimer = setTimeout(() => customCursor.classList.remove('visible'), 900);
+  });
+  document.addEventListener('mouseover', (event) => {
+    customCursor.classList.toggle('active', Boolean(event.target.closest('a,button,.btn')));
+  });
+  const loopCursor = () => {
+    cx += (tx - cx) * 0.18;
+    cy += (ty - cy) * 0.18;
+    customCursor.style.transform = `translate(${cx}px, ${cy}px) translate(-50%, -50%)`;
+    requestAnimationFrame(loopCursor);
+  };
+  loopCursor();
+}
+
+if (heroCanvas) {
+  const ctx = heroCanvas.getContext('2d');
+  const points = Array.from({ length: 36 }, () => ({ x: Math.random(), y: Math.random(), vx: (Math.random() - 0.5) * 0.0008, vy: (Math.random() - 0.5) * 0.0008 }));
+  let mx = 0; let my = 0;
+  const resize = () => {
+    const rect = heroCanvas.getBoundingClientRect();
+    heroCanvas.width = rect.width * devicePixelRatio;
+    heroCanvas.height = rect.height * devicePixelRatio;
+    ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
+  };
+  resize();
+  window.addEventListener('resize', resize);
+  window.addEventListener('mousemove', (e) => {
+    const r = heroCanvas.getBoundingClientRect();
+    mx = ((e.clientX - r.left) / r.width - 0.5) * 18;
+    my = ((e.clientY - r.top) / r.height - 0.5) * 18;
+  });
+  const draw = () => {
+    const w = heroCanvas.clientWidth;
+    const h = heroCanvas.clientHeight;
+    ctx.clearRect(0, 0, w, h);
+    points.forEach((p) => {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0 || p.x > 1) p.vx *= -1;
+      if (p.y < 0 || p.y > 1) p.vy *= -1;
+    });
+    for (let i = 0; i < points.length; i += 1) {
+      const a = points[i];
+      const ax = a.x * w + mx; const ay = a.y * h + my;
+      ctx.fillStyle = 'rgba(34,197,94,.15)';
+      ctx.beginPath(); ctx.arc(ax, ay, 2.2, 0, Math.PI * 2); ctx.fill();
+      for (let j = i + 1; j < points.length; j += 1) {
+        const b = points[j];
+        const bx = b.x * w + mx; const by = b.y * h + my;
+        const d = Math.hypot(ax - bx, ay - by);
+        if (d < 120) {
+          ctx.strokeStyle = `rgba(34,197,94,${(1 - d / 120) * 0.15})`;
+          ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.moveTo(ax, ay); ctx.lineTo(bx, by); ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  };
+  draw();
+}
+
 
 const toggleFullscreenBtn = document.querySelector('#toggleFullscreen');
-if (toggleFullscreenBtn) {
-  toggleFullscreenBtn.addEventListener('click', async () => {
-    try {
-      if (!document.fullscreenElement) {
-        await document.documentElement.requestFullscreen();
-        toggleFullscreenBtn.textContent = '🡼';
-      } else {
-        await document.exitFullscreen();
-        toggleFullscreenBtn.textContent = '⛶';
-      }
-    } catch (error) {
-      console.warn("Impossible d'activer le plein écran automatiquement.", error);
+async function toggleFullscreenMode() {
+  try {
+    if (!document.fullscreenElement) {
+      await document.documentElement.requestFullscreen();
+      if (toggleFullscreenBtn) toggleFullscreenBtn.textContent = '🡼';
+    } else {
+      await document.exitFullscreen();
+      if (toggleFullscreenBtn) toggleFullscreenBtn.textContent = '⛶';
     }
-  });
+  } catch (error) {
+    console.warn("Impossible d'activer le plein écran automatiquement.", error);
+  }
+}
 
+if (toggleFullscreenBtn) {
+  toggleFullscreenBtn.addEventListener('click', toggleFullscreenMode);
   document.addEventListener('fullscreenchange', () => {
     toggleFullscreenBtn.textContent = document.fullscreenElement ? '🡼' : '⛶';
   });
