@@ -6,42 +6,11 @@ const panelIndexById = new Map(panels.map((panel, index) => [panel.id, index]));
 const menuTargets = menuLinks
   .map((link) => ({ link, id: link.getAttribute('href')?.slice(1) || '' }))
   .filter((item) => panelIndexById.has(item.id));
-const introOverlay = document.querySelector('#introOverlay');
-const introFullscreenBtn = document.querySelector('#introFullscreen');
-let introActive = Boolean(introOverlay);
-let introStarted = false;
 let isAnimating = false;
 let currentIndex = 0;
 let wheelAccum = 0;
 let wheelResetTimer;
 let lastWheelTrigger = 0;
-
-if (introActive) {
-  document.body.classList.add('intro-active');
-}
-
-function startIntroSequence() {
-  if (!introOverlay || !introActive || introStarted) return;
-  introStarted = true;
-  introOverlay.classList.add('logo-in');
-  setTimeout(() => {
-    introOverlay.classList.add('slide-up');
-    document.body.classList.add('intro-revealed');
-  }, 900);
-  setTimeout(() => {
-    introActive = false;
-    document.body.classList.remove('intro-active');
-    introOverlay.remove();
-    detectCurrentIndex();
-  }, 1650);
-}
-
-function handleIntroWheel(event) {
-  if (!introActive) return;
-  event.preventDefault();
-  if (Math.abs(event.deltaY) < 2) return;
-  startIntroSequence();
-}
 
 function clampIndex(i) {
   return Math.max(0, Math.min(panels.length - 1, i));
@@ -167,10 +136,6 @@ function handlePreviewWheel(direction) {
 }
 
 page.addEventListener('wheel', (event) => {
-  if (introActive) {
-    handleIntroWheel(event);
-    return;
-  }
   if (window.innerWidth <= 980 || isAnimating) return;
   event.preventDefault();
 
@@ -192,10 +157,6 @@ page.addEventListener('wheel', (event) => {
   if (handleProjectWheel(direction) || handlePreviewWheel(direction)) return;
   goToIndex(currentIndex + direction);
 }, { passive: false });
-
-if (introOverlay) {
-  introOverlay.addEventListener('wheel', handleIntroWheel, { passive: false });
-}
 
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
@@ -355,10 +316,6 @@ if (toggleFullscreenBtn) {
   document.addEventListener('fullscreenchange', () => {
     toggleFullscreenBtn.textContent = document.fullscreenElement ? '🡼' : '⛶';
   });
-}
-
-if (introFullscreenBtn) {
-  introFullscreenBtn.addEventListener('click', toggleFullscreenMode);
 }
 
 document.addEventListener('keydown', (event) => {
